@@ -5,6 +5,7 @@ import 'package:lucide_flutter/lucide_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants.dart';
 import '../../providers/auth_provider.dart';
+import '../../providers/rsvp_provider.dart';
 import '../../widgets/common/avatar_circle.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -184,6 +185,7 @@ class ProfileScreen extends StatelessWidget {
             // Log out
             GestureDetector(
               onTap: () {
+                context.read<RsvpProvider>().reset();
                 context.read<AuthProvider>().logout();
                 context.go('/splash');
               },
