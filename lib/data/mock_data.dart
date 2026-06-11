@@ -1,0 +1,487 @@
+// Single source of all mock data for the app.
+import '../models/event.dart';
+import '../models/opportunity.dart';
+import '../models/community.dart';
+import '../models/chat_room.dart';
+import '../models/message.dart';
+import '../models/user.dart';
+import '../models/notification_item.dart';
+
+final mockCurrentUser = const AppUser(
+  id: 'u1',
+  name: 'Aline Umuhoza',
+  initials: 'AU',
+  campus: 'Kigali Campus',
+  email: 'a.umuhoza@alustudent.com',
+  eventsAttended: 23,
+  communities: 5,
+  connections: 87,
+  badges: ['Early Adopter', 'Event Organizer', 'Community Builder'],
+);
+
+final List<Event> mockEvents = [
+  Event(
+    id: 'e1',
+    title: 'ALU Entrepreneurship Pitch Night',
+    description:
+        'Showcase your startup idea to a panel of investors and industry leaders. Network with fellow entrepreneurs and get feedback from experienced mentors. This is your chance to pitch, connect, and potentially secure seed funding for your venture.',
+    startDate: DateTime(2026, 5, 24, 18, 0),
+    campus: 'Kigali',
+    category: 'Startup',
+    organizer: 'Entrepreneurship Club',
+    attendeeCount: 48,
+    interestedCount: 12,
+    tags: ['startup', 'pitch', 'investment'],
+    location: 'Main Auditorium, Kigali Campus',
+  ),
+  Event(
+    id: 'e2',
+    title: 'AI for Social Impact Workshop',
+    description:
+        'Explore how artificial intelligence can be applied to solve pressing social challenges across Africa. Hands-on sessions with real datasets and tools. Bring your laptop and curiosity.',
+    startDate: DateTime(2026, 6, 5, 9, 0),
+    campus: 'Mauritius',
+    category: 'Workshop',
+    organizer: 'Tech & Innovation Hub',
+    attendeeCount: 32,
+    interestedCount: 20,
+    tags: ['AI', 'social impact', 'tech'],
+    location: 'Innovation Lab, Mauritius Campus',
+  ),
+  Event(
+    id: 'e3',
+    title: 'Design Thinking Bootcamp',
+    description:
+        'A full-day immersive bootcamp on human-centered design. Learn the five stages of design thinking through practical challenges and team exercises.',
+    startDate: DateTime(2026, 5, 30, 8, 30),
+    campus: 'Kigali',
+    category: 'Workshop',
+    organizer: 'ALU Academic Team',
+    attendeeCount: 60,
+    interestedCount: 25,
+    tags: ['design', 'innovation', 'workshop'],
+    location: 'Creative Studio, Kigali Campus',
+  ),
+  Event(
+    id: 'e4',
+    title: 'ALU Climate Action Week',
+    description:
+        'A week-long series of events, panels, and community projects focused on climate change solutions in Africa. Open to both campuses with hybrid participation available.',
+    startDate: DateTime(2026, 5, 26),
+    endDate: DateTime(2026, 5, 30),
+    campus: 'Both',
+    category: 'Community',
+    organizer: 'ALU Climate Action Group',
+    attendeeCount: 150,
+    interestedCount: 85,
+    tags: ['climate', 'sustainability', 'community'],
+    location: 'Both Campuses + Online',
+  ),
+  Event(
+    id: 'e5',
+    title: 'Build Your First MVP Workshop',
+    description:
+        'Step-by-step guide to building a minimum viable product from idea to prototype. Covering lean startup methodology, rapid prototyping, and user testing basics.',
+    startDate: DateTime(2026, 6, 2, 10, 0),
+    campus: 'Kigali',
+    category: 'Startup',
+    organizer: 'Entrepreneurship Club',
+    attendeeCount: 40,
+    interestedCount: 18,
+    maxParticipants: 50,
+    tags: ['startup', 'MVP', 'product'],
+    location: 'Startup Hub, Kigali Campus',
+  ),
+  Event(
+    id: 'e6',
+    title: 'Campus Ambassador Program Info Session',
+    description:
+        'Learn about the ALU Campus Ambassador Program and how you can become a brand ambassador representing ALU in your community. Application period opens after the session.',
+    startDate: DateTime(2026, 5, 22, 14, 0),
+    campus: 'Mauritius',
+    category: 'Leadership',
+    organizer: 'Student Affairs Office',
+    attendeeCount: 25,
+    interestedCount: 30,
+    tags: ['leadership', 'ambassador', 'opportunity'],
+    location: 'Conference Room B, Mauritius Campus',
+  ),
+  Event(
+    id: 'e7',
+    title: 'Pan-African Debate Championship',
+    description:
+        'Teams from across Africa compete in this prestigious annual debate championship hosted by ALU Kigali. Topics cover politics, economics, and social issues facing the continent.',
+    startDate: DateTime(2026, 6, 10, 9, 0),
+    campus: 'Kigali',
+    category: 'Academic',
+    organizer: 'ALU Debate Society',
+    attendeeCount: 120,
+    interestedCount: 60,
+    tags: ['debate', 'Africa', 'competition'],
+    location: 'Main Hall, Kigali Campus',
+  ),
+  Event(
+    id: 'e8',
+    title: 'Women in Tech Summit',
+    description:
+        'A one-day summit celebrating and empowering women in technology. Features keynotes, panel discussions, mentorship sessions, and networking opportunities with industry leaders.',
+    startDate: DateTime(2026, 6, 15, 9, 0),
+    campus: 'Mauritius',
+    category: 'Leadership',
+    organizer: 'Women in Leadership',
+    attendeeCount: 200,
+    interestedCount: 90,
+    tags: ['women', 'tech', 'leadership', 'empowerment'],
+    location: 'Grand Hall, Mauritius Campus',
+  ),
+];
+
+final List<Opportunity> mockOpportunities = [
+  Opportunity(
+    id: 'op1',
+    title: 'Sustainable Solutions Challenge',
+    description:
+        'Submit your innovative solution to one of Africa\'s pressing sustainability challenges. Cash prizes and incubation support for top teams.',
+    type: 'Competition',
+    campus: 'Mauritius',
+    deadline: DateTime(2026, 6, 20),
+    category: 'Community',
+    tags: ['sustainability', 'competition', 'prize'],
+  ),
+  Opportunity(
+    id: 'op2',
+    title: 'Google Developer Student Club Lead',
+    description:
+        'Lead the GDSC chapter at ALU. Organize workshops, hackathons, and connect students with Google technologies and mentors.',
+    type: 'Leadership Role',
+    campus: 'Both',
+    deadline: DateTime(2026, 6, 30),
+    category: 'Leadership',
+    tags: ['Google', 'leadership', 'tech', 'GDSC'],
+  ),
+  Opportunity(
+    id: 'op3',
+    title: 'ALU Student Research Grant',
+    description:
+        'Apply for up to \$2,000 in research funding to investigate topics related to African development, technology, or social entrepreneurship.',
+    type: 'Grant',
+    campus: 'Both',
+    deadline: DateTime(2026, 7, 15),
+    category: 'Academic',
+    tags: ['research', 'grant', 'academic'],
+  ),
+  Opportunity(
+    id: 'op4',
+    title: 'Startup Incubator Cohort 3',
+    description:
+        'Join ALU\'s third startup incubator cohort. 3-month intensive program with mentorship, workspace, and seed funding opportunities.',
+    type: 'Program',
+    campus: 'Kigali',
+    deadline: DateTime(2026, 6, 25),
+    category: 'Startup',
+    tags: ['startup', 'incubator', 'funding'],
+  ),
+  Opportunity(
+    id: 'op5',
+    title: 'ALU Brand Ambassador',
+    description:
+        'Represent ALU at external events, universities, and conferences in Mauritius and the Indian Ocean region. Stipend included.',
+    type: 'Role',
+    campus: 'Mauritius',
+    deadline: DateTime(2026, 6, 10),
+    category: 'Community',
+    tags: ['ambassador', 'community', 'brand'],
+  ),
+];
+
+final List<Community> mockCommunities = [
+  const Community(
+    id: 'c1',
+    name: 'ALU Debate Society',
+    description:
+        'Sharpening minds and voices through competitive and parliamentary debate. Open to all campuses.',
+    memberCount: 124,
+    category: 'Academic',
+    lastActivity: 'Active 1h ago',
+    isActiveNow: true,
+    colorHex: 'E74C3C',
+  ),
+  const Community(
+    id: 'c2',
+    name: 'Entrepreneurship Club',
+    description:
+        'Building the next generation of African entrepreneurs through workshops, mentorship, and pitch events.',
+    memberCount: 250,
+    category: 'Startup',
+    lastActivity: 'Active now',
+    isActiveNow: true,
+    colorHex: 'F5A623',
+  ),
+  const Community(
+    id: 'c3',
+    name: 'Women in Leadership',
+    description:
+        'Empowering women at ALU to lead, inspire, and drive change across the continent.',
+    memberCount: 180,
+    category: 'Leadership',
+    lastActivity: 'Active 2h ago',
+    isActiveNow: false,
+    colorHex: 'FF6B9D',
+  ),
+  const Community(
+    id: 'c4',
+    name: 'Tech & Innovation Hub',
+    description:
+        'Where technology meets creativity. Hackathons, coding sessions, and tech talks for builders.',
+    memberCount: 210,
+    category: 'Tech',
+    lastActivity: 'Active 30m ago',
+    isActiveNow: true,
+    colorHex: '6C63FF',
+  ),
+  const Community(
+    id: 'c5',
+    name: 'ALU Climate Action Group',
+    description:
+        'Taking action on climate change through community projects, advocacy, and education.',
+    memberCount: 98,
+    category: 'Community',
+    lastActivity: 'Active 5h ago',
+    isActiveNow: false,
+    colorHex: '2ECC71',
+  ),
+  const Community(
+    id: 'c6',
+    name: 'Creative Arts Collective',
+    description:
+        'A space for visual artists, writers, musicians, and creatives to share, collaborate, and exhibit work.',
+    memberCount: 76,
+    category: 'Social',
+    lastActivity: 'Active yesterday',
+    isActiveNow: false,
+    colorHex: '3BAFDA',
+  ),
+];
+
+final List<ChatRoom> mockChatRooms = [
+  ChatRoom(
+    id: 'cr1',
+    name: 'Entrepreneurship Club',
+    lastMessage: 'Don\'t forget the pitch night prep tomorrow!',
+    lastMessageTime: DateTime.now().subtract(const Duration(minutes: 12)),
+    memberCount: 250,
+    unreadCount: 5,
+    isActiveNow: true,
+    colorHex: 'F5A623',
+  ),
+  ChatRoom(
+    id: 'cr2',
+    name: 'AI Workshop Group',
+    lastMessage: 'Here are the slides from today\'s session 📊',
+    lastMessageTime: DateTime.now().subtract(const Duration(hours: 1)),
+    memberCount: 32,
+    unreadCount: 2,
+    isActiveNow: true,
+    colorHex: '6C63FF',
+  ),
+  ChatRoom(
+    id: 'cr3',
+    name: 'Campus Leaders',
+    lastMessage: 'Meeting rescheduled to Thursday at 3 PM',
+    lastMessageTime: DateTime.now().subtract(const Duration(hours: 3)),
+    memberCount: 15,
+    unreadCount: 0,
+    isActiveNow: false,
+    colorHex: '2ECC71',
+  ),
+];
+
+Map<String, List<Message>> mockMessages = {
+  'cr1': [
+    Message(
+      id: 'm1',
+      senderId: 'u2',
+      senderName: 'Kwame Asante',
+      content: 'Hey everyone! Excited for the pitch night 🎤',
+      timestamp: DateTime.now().subtract(const Duration(hours: 2, minutes: 30)),
+    ),
+    Message(
+      id: 'm2',
+      senderId: 'u3',
+      senderName: 'Fatima Diallo',
+      content: 'Same here! Have you finalized your deck?',
+      timestamp: DateTime.now().subtract(const Duration(hours: 2, minutes: 15)),
+    ),
+    Message(
+      id: 'm3',
+      senderId: 'u1',
+      senderName: 'Aline Umuhoza',
+      content: 'Almost done, just refining the financial projections.',
+      timestamp: DateTime.now().subtract(const Duration(hours: 2)),
+    ),
+    Message(
+      id: 'm4',
+      senderId: 'u2',
+      senderName: 'Kwame Asante',
+      content: 'Pro tip: keep the problem slide to 2 sentences max.',
+      timestamp: DateTime.now().subtract(const Duration(hours: 1, minutes: 45)),
+      reactions: {'👍': 3, '🔥': 2},
+    ),
+    Message(
+      id: 'm5',
+      senderId: 'u4',
+      senderName: 'Amara Sesay',
+      content: 'presentation_template_v3.pdf',
+      timestamp: DateTime.now().subtract(const Duration(hours: 1, minutes: 30)),
+      type: MessageType.file,
+      fileName: 'presentation_template_v3.pdf',
+      fileSize: '2.4 MB',
+    ),
+    Message(
+      id: 'm6',
+      senderId: 'u3',
+      senderName: 'Fatima Diallo',
+      content: 'Thanks Amara! This is super helpful.',
+      timestamp: DateTime.now().subtract(const Duration(hours: 1)),
+      replyToId: 'm5',
+      replyToContent: 'presentation_template_v3.pdf',
+    ),
+    Message(
+      id: 'm7',
+      senderId: 'u5',
+      senderName: 'Chidi Okonkwo',
+      content: 'Don\'t forget the pitch night prep tomorrow!',
+      timestamp: DateTime.now().subtract(const Duration(minutes: 12)),
+    ),
+    Message(
+      id: 'm8',
+      senderId: 'u1',
+      senderName: 'Aline Umuhoza',
+      content: 'I\'ll be there at 6 PM sharp 🙌',
+      timestamp: DateTime.now().subtract(const Duration(minutes: 5)),
+    ),
+  ],
+  'cr2': [
+    Message(
+      id: 'cr2m1',
+      senderId: 'u6',
+      senderName: 'Dr. Naledi Khumalo',
+      content: 'Welcome to the AI Workshop group! Today we cover neural networks.',
+      timestamp: DateTime.now().subtract(const Duration(hours: 5)),
+    ),
+    Message(
+      id: 'cr2m2',
+      senderId: 'u7',
+      senderName: 'Issa Touré',
+      content: 'Looking forward to the hands-on section!',
+      timestamp: DateTime.now().subtract(const Duration(hours: 4, minutes: 30)),
+    ),
+    Message(
+      id: 'cr2m3',
+      senderId: 'u1',
+      senderName: 'Aline Umuhoza',
+      content: 'Will we get access to the Google Colab notebooks?',
+      timestamp: DateTime.now().subtract(const Duration(hours: 4)),
+    ),
+    Message(
+      id: 'cr2m4',
+      senderId: 'u6',
+      senderName: 'Dr. Naledi Khumalo',
+      content: 'Yes! Sharing the links now in the resources channel.',
+      timestamp: DateTime.now().subtract(const Duration(hours: 3, minutes: 45)),
+      reactions: {'✅': 8},
+    ),
+    Message(
+      id: 'cr2m5',
+      senderId: 'u8',
+      senderName: 'Miriam Gebru',
+      content: 'ai_workshop_notes.pdf',
+      timestamp: DateTime.now().subtract(const Duration(hours: 2)),
+      type: MessageType.file,
+      fileName: 'ai_workshop_notes.pdf',
+      fileSize: '1.1 MB',
+    ),
+    Message(
+      id: 'cr2m6',
+      senderId: 'u6',
+      senderName: 'Dr. Naledi Khumalo',
+      content: 'Here are the slides from today\'s session 📊',
+      timestamp: DateTime.now().subtract(const Duration(hours: 1)),
+    ),
+  ],
+  'cr3': [
+    Message(
+      id: 'cr3m1',
+      senderId: 'u9',
+      senderName: 'Prof. James Oduya',
+      content: 'Quick reminder: monthly leaders sync this week.',
+      timestamp: DateTime.now().subtract(const Duration(hours: 6)),
+    ),
+    Message(
+      id: 'cr3m2',
+      senderId: 'u1',
+      senderName: 'Aline Umuhoza',
+      content: 'What time on Wednesday?',
+      timestamp: DateTime.now().subtract(const Duration(hours: 5, minutes: 30)),
+    ),
+    Message(
+      id: 'cr3m3',
+      senderId: 'u9',
+      senderName: 'Prof. James Oduya',
+      content: 'Meeting rescheduled to Thursday at 3 PM',
+      timestamp: DateTime.now().subtract(const Duration(hours: 3)),
+      reactions: {'👍': 5},
+    ),
+  ],
+};
+
+final List<NotificationItem> mockNotifications = [
+  NotificationItem(
+    id: 'n1',
+    title: 'New event: Women in Tech Summit',
+    description: 'Women in Leadership just posted a new event you might like.',
+    timestamp: DateTime.now().subtract(const Duration(hours: 1)),
+    type: NotificationType.event,
+    isRead: false,
+  ),
+  NotificationItem(
+    id: 'n2',
+    title: 'Entrepreneurship Club is active',
+    description: '12 new messages in Entrepreneurship Club chat.',
+    timestamp: DateTime.now().subtract(const Duration(hours: 2)),
+    type: NotificationType.community,
+    isRead: false,
+  ),
+  NotificationItem(
+    id: 'n3',
+    title: 'Kwame Asante mentioned you',
+    description: '"@Aline great point about the financials!"',
+    timestamp: DateTime.now().subtract(const Duration(hours: 3)),
+    type: NotificationType.mention,
+    isRead: false,
+  ),
+  NotificationItem(
+    id: 'n4',
+    title: 'RSVP confirmed: Pitch Night',
+    description: 'You\'re going to ALU Entrepreneurship Pitch Night.',
+    timestamp: DateTime.now().subtract(const Duration(days: 1, hours: 2)),
+    type: NotificationType.event,
+    isRead: true,
+  ),
+  NotificationItem(
+    id: 'n5',
+    title: 'Tech & Innovation Hub update',
+    description: 'New post: "Hackathon 2026 — registrations open!"',
+    timestamp: DateTime.now().subtract(const Duration(days: 1, hours: 5)),
+    type: NotificationType.community,
+    isRead: true,
+  ),
+  NotificationItem(
+    id: 'n6',
+    title: 'Design Thinking Bootcamp reminder',
+    description: 'Your event is tomorrow at 8:30 AM. Don\'t be late!',
+    timestamp: DateTime.now().subtract(const Duration(days: 2)),
+    type: NotificationType.event,
+    isRead: true,
+  ),
+];
