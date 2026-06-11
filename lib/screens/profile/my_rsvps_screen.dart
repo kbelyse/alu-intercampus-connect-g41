@@ -133,8 +133,8 @@ class _RsvpList extends StatelessWidget {
               borderRadius: BorderRadius.circular(AppRadius.card),
               border: Border.all(color: AppColors.border),
             ),
-            child: IntrinsicHeight(
-              child: Row(
+            child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
                     width: 4,
@@ -183,7 +183,6 @@ class _RsvpList extends StatelessWidget {
                 ],
               ),
             ),
-          ),
         );
       },
     );
@@ -207,11 +206,11 @@ class _StatusBadge extends StatelessWidget {
       fg = AppColors.textSecondary;
       label = 'Past';
     } else if (status == RsvpStatus.going) {
-      bg = AppColors.success.withOpacity(0.15);
+      bg = AppColors.success.withValues(alpha: 0.15);
       fg = AppColors.success;
       label = 'Going';
     } else {
-      bg = AppColors.primary.withOpacity(0.15);
+      bg = AppColors.primary.withValues(alpha: 0.15);
       fg = AppColors.primary;
       label = 'Interested';
     }

@@ -37,7 +37,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final user = context.watch<AuthProvider>().user;
     final feed = context.watch<FeedProvider>();
-    final notif = context.watch<NotificationProvider>();
+    final hasUnread = context.select<NotificationProvider, bool>(
+        (n) => n.unreadCount > 0);
     final rsvp = context.watch<RsvpProvider>();
     final communities = context.watch<CommunityProvider>();
 
@@ -98,7 +99,7 @@ class HomeScreen extends StatelessWidget {
                             imageUrl: user?.avatarUrl,
                           ),
                         ),
-                        if (notif.unreadCount > 0)
+                        if (hasUnread)
                           Positioned(
                             right: -2,
                             top: -2,
@@ -128,7 +129,7 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.lg),
                   itemCount: _campuses.length,
-                  separatorBuilder: (_, __) =>
+                  separatorBuilder: (_, _) =>
                       const SizedBox(width: AppSpacing.sm),
                   itemBuilder: (context, i) {
                     final c = _campuses[i];
@@ -201,7 +202,7 @@ class HomeScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       horizontal: AppSpacing.lg),
                   itemCount: _filters.length,
-                  separatorBuilder: (_, __) =>
+                  separatorBuilder: (_, _) =>
                       const SizedBox(width: AppSpacing.sm),
                   itemBuilder: (context, i) {
                     final f = _filters[i];

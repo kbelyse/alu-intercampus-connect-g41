@@ -105,6 +105,8 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                           imageUrl: event.imageUrl,
                           fit: BoxFit.cover,
                           height: 250,
+                          memCacheWidth: 800,
+                          memCacheHeight: 500,
                           placeholder: (context, url) => const ShimmerBox(
                             width: double.infinity,
                             height: 250,

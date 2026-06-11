@@ -55,7 +55,7 @@ class _SplashScreenState extends State<SplashScreen>
               fit: StackFit.expand,
               children: [
                 CachedNetworkImage(
-                  imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80',
+                  imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&q=70',
                   fit: BoxFit.cover,
                   placeholder: (context, url) => const ShimmerBox(
                     width: double.infinity,

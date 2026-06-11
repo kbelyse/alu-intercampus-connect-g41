@@ -37,12 +37,15 @@ class AvatarCircle extends StatelessWidget {
   Widget build(BuildContext context) {
     final bg = color ?? _colorFromInitials(initials);
     if (imageUrl != null && imageUrl!.isNotEmpty) {
+      final cacheDim = (size * 2).toInt();
       return ClipOval(
         child: CachedNetworkImage(
           imageUrl: imageUrl!,
           width: size,
           height: size,
           fit: BoxFit.cover,
+          memCacheWidth: cacheDim,
+          memCacheHeight: cacheDim,
           placeholder: (context, url) => ShimmerBox(width: size, height: size, borderRadius: size / 2),
           errorWidget: (context, url, error) => _buildFallback(bg),
         ),

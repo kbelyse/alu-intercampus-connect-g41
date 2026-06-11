@@ -38,6 +38,8 @@ class GradientCard extends StatelessWidget {
                 CachedNetworkImage(
                   imageUrl: event.imageUrl,
                   fit: BoxFit.cover,
+                  memCacheWidth: 800,
+                  memCacheHeight: 440,
                   placeholder: (context, url) => ShimmerBox(
                     width: double.infinity,
                     height: 220,

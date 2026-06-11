@@ -45,6 +45,8 @@ class CommunityCard extends StatelessWidget {
                 width: 44,
                 height: 44,
                 fit: BoxFit.cover,
+                memCacheWidth: 88,
+                memCacheHeight: 88,
                 placeholder: (context, url) =>
                     const ShimmerBox(width: 44, height: 44, borderRadius: 22),
                 errorWidget: (context, url, error) => Container(

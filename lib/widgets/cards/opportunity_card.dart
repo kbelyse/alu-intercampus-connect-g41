@@ -28,8 +28,8 @@ class OpportunityCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppRadius.card),
           border: Border.all(color: AppColors.border),
         ),
-        child: IntrinsicHeight(
-          child: Row(
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
                 width: 4,
@@ -66,6 +66,8 @@ class OpportunityCard extends StatelessWidget {
                               width: 60,
                               height: 60,
                               fit: BoxFit.cover,
+                              memCacheWidth: 120,
+                              memCacheHeight: 120,
                               placeholder: (context, url) =>
                                   const ShimmerBox(width: 60, height: 60, borderRadius: 8),
                               errorWidget: (context, url, error) => Container(
@@ -134,7 +136,6 @@ class OpportunityCard extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 }

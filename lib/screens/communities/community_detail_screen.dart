@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../../core/constants.dart';
 import '../../data/mock_data.dart';
+import '../../models/event.dart';
 import '../../providers/community_provider.dart';
 import '../../widgets/common/avatar_circle.dart';
 import '../../widgets/common/shimmer_box.dart';
@@ -100,6 +101,8 @@ class _CommunityDetailScreenState extends State<CommunityDetailScreen>
                           CachedNetworkImage(
                             imageUrl: community.bannerImageUrl,
                             fit: BoxFit.cover,
+                            memCacheWidth: 800,
+                            memCacheHeight: 400,
                             placeholder: (context, url) => const ShimmerBox(
                               width: double.infinity,
                               height: 200,
@@ -295,9 +298,10 @@ class _PostsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      physics: const ClampingScrollPhysics(),
       padding: const EdgeInsets.all(AppSpacing.lg),
       itemCount: _posts.length,
-      separatorBuilder: (_, __) =>
+      separatorBuilder: (_, _) =>
           const Divider(color: AppColors.border),
       itemBuilder: (context, i) => Padding(
         padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
@@ -317,7 +321,7 @@ class _PostsTab extends StatelessWidget {
 }
 
 class _EventsTab extends StatelessWidget {
-  final List events;
+  final List<Event> events;
 
   const _EventsTab({required this.events});
 
@@ -330,6 +334,7 @@ class _EventsTab extends StatelessWidget {
       );
     }
     return ListView.builder(
+      physics: const ClampingScrollPhysics(),
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
       itemCount: events.length,
       itemBuilder: (context, i) =>
@@ -346,6 +351,7 @@ class _MembersTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
+      physics: const ClampingScrollPhysics(),
       padding: const EdgeInsets.all(AppSpacing.lg),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 4,

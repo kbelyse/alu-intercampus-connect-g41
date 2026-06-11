@@ -142,7 +142,7 @@ class ProfileScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(
                     horizontal: AppSpacing.lg),
                 itemCount: user.badges.length,
-                separatorBuilder: (_, __) =>
+                separatorBuilder: (_, _) =>
                     const SizedBox(width: AppSpacing.sm),
                 itemBuilder: (context, i) {
                   final icons = ['🎖️', '🎤', '🏗️'];

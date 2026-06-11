@@ -154,7 +154,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                   height: 140,
                   decoration: BoxDecoration(
                     color: _selectedCover != null
-                        ? _mockCovers[_selectedCover!].withOpacity(0.3)
+                        ? _mockCovers[_selectedCover!].withValues(alpha: 0.3)
                         : AppColors.surface,
                     borderRadius: BorderRadius.circular(AppRadius.card),
                     border: Border.all(
@@ -167,7 +167,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
-                                _mockCovers[_selectedCover!].withOpacity(0.8),
+                                _mockCovers[_selectedCover!].withValues(alpha: 0.8),
                                 AppColors.background,
                               ],
                             ),

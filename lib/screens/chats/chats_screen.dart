@@ -113,7 +113,7 @@ class ChatsScreen extends StatelessWidget {
             Expanded(
               child: ListView.separated(
                 itemCount: chat.rooms.length,
-                separatorBuilder: (_, __) =>
+                separatorBuilder: (_, _) =>
                     const Divider(height: 1, color: AppColors.border),
                 itemBuilder: (context, i) {
                   final room = chat.rooms[i];

@@ -34,8 +34,8 @@ class EventCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppRadius.card),
           border: Border.all(color: AppColors.border),
         ),
-        child: IntrinsicHeight(
-          child: Row(
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
                 width: 4,
@@ -72,6 +72,8 @@ class EventCard extends StatelessWidget {
                               width: 60,
                               height: 60,
                               fit: BoxFit.cover,
+                              memCacheWidth: 120,
+                              memCacheHeight: 120,
                               placeholder: (context, url) =>
                                   const ShimmerBox(width: 60, height: 60, borderRadius: 8),
                               errorWidget: (context, url, error) => Container(
@@ -135,7 +137,6 @@ class EventCard extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 
@@ -158,6 +159,8 @@ class EventCard extends StatelessWidget {
                 child: CachedNetworkImage(
                   imageUrl: event.imageUrl,
                   fit: BoxFit.cover,
+                  memCacheWidth: 360,
+                  memCacheHeight: 400,
                   placeholder: (context, url) => ShimmerBox(
                     width: 180,
                     height: double.infinity,

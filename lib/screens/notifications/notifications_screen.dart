@@ -71,7 +71,7 @@ class NotificationsScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                   horizontal: AppSpacing.lg, vertical: AppSpacing.sm),
               itemCount: _filters.length,
-              separatorBuilder: (_, __) =>
+              separatorBuilder: (_, _) =>
                   const SizedBox(width: AppSpacing.sm),
               itemBuilder: (context, i) {
                 final f = _filters[i];
