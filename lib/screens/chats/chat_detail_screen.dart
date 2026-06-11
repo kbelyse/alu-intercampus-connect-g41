@@ -46,7 +46,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
 
   void _send(BuildContext context, String currentUserId, String currentUserName) {
     final text = _inputController.text.trim();
-    if (text.isEmpty) return;
+    if (text.isEmpty || text.length > 2000) return;
     context.read<ChatProvider>().sendMessage(
           widget.roomId,
           text,
@@ -66,8 +66,12 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
     final chat = context.watch<ChatProvider>();
     final room = chat.getRoom(widget.roomId);
     final messages = chat.getMessages(widget.roomId);
-    final userId = auth.user?.id ?? 'u1';
-    final userName = auth.user?.name ?? 'Aline Umuhoza';
+    if (auth.user == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => context.go('/splash'));
+      return const Scaffold(backgroundColor: AppColors.background);
+    }
+    final userId = auth.user!.id;
+    final userName = auth.user!.name;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -84,10 +88,12 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
         title: Row(
           children: [
             AvatarCircle(
-              initials: room?.name.substring(0, 2).toUpperCase() ?? 'CH',
+              initials: room != null && room.name.length >= 2
+                  ? room.name.substring(0, 2).toUpperCase()
+                  : 'CH',
               size: 36,
               color: room != null
-                  ? Color(int.parse('FF${room.colorHex}', radix: 16))
+                  ? _parseColor(room.colorHex)
                   : AppColors.primary,
               imageUrl: room?.avatarUrl,
             ),
@@ -292,6 +298,16 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
   }
 }
 
+Color _parseColor(String hex) {
+  try {
+    final cleaned = hex.replaceAll('#', '');
+    if (cleaned.length == 6) {
+      return Color(int.parse('FF$cleaned', radix: 16));
+    }
+  } catch (_) {}
+  return AppColors.primary;
+}
+
 class _MessageBubble extends StatelessWidget {
   final Message message;
   final bool isMe;
@@ -322,9 +338,11 @@ class _MessageBubble extends StatelessWidget {
                 child: Row(
                   children: [
                     AvatarCircle(
-                      initials: message.senderName.isNotEmpty
+                      initials: message.senderName.length >= 2
                           ? message.senderName.substring(0, 2).toUpperCase()
-                          : '??',
+                          : message.senderName.isNotEmpty
+                              ? message.senderName.toUpperCase()
+                              : '??',
                       size: 20,
                       fontSize: 8,
                       imageUrl: senderAvatarUrl,
