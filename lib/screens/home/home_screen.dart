@@ -1,4 +1,4 @@
-// Main home feed with greeting, search, filter chips, featured card, and content sections.
+// Main home feed with greeting, campus filter, search, category chips, AI recommendations, and content sections.
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -6,6 +6,8 @@ import '../../core/constants.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/feed_provider.dart';
 import '../../providers/notification_provider.dart';
+import '../../providers/rsvp_provider.dart';
+import '../../providers/community_provider.dart';
 import '../../widgets/common/app_search_bar.dart';
 import '../../widgets/common/category_chip.dart';
 import '../../widgets/common/gradient_card.dart';
@@ -25,12 +27,28 @@ class HomeScreen extends StatelessWidget {
     (label: 'Academic', value: FeedFilter.academic),
   ];
 
+  static const _campuses = [
+    (label: 'All Campuses', value: null),
+    (label: 'Kigali', value: 'Kigali'),
+    (label: 'Mauritius', value: 'Mauritius'),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final user =
-        context.watch<AuthProvider>().user;
+    final user = context.watch<AuthProvider>().user;
     final feed = context.watch<FeedProvider>();
     final notif = context.watch<NotificationProvider>();
+    final rsvp = context.watch<RsvpProvider>();
+    final communities = context.watch<CommunityProvider>();
+
+    final allRsvpedIds = {
+      ...rsvp.getEventIdsByStatus(RsvpStatus.going),
+      ...rsvp.getEventIdsByStatus(RsvpStatus.interested),
+    };
+    final recommended = feed.getRecommendations(
+      rsvpedEventIds: allRsvpedIds,
+      joinedCommunities: communities.joinedCommunities,
+    );
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -102,6 +120,68 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: AppSpacing.lg),
 
+              // Campus filter bar
+              SizedBox(
+                height: 36,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.lg),
+                  itemCount: _campuses.length,
+                  separatorBuilder: (_, __) =>
+                      const SizedBox(width: AppSpacing.sm),
+                  itemBuilder: (context, i) {
+                    final c = _campuses[i];
+                    final isSelected = feed.campusFilter == c.value;
+                    return GestureDetector(
+                      onTap: () => feed.setCampus(c.value),
+                      child: AnimatedContainer(
+                        duration: AppDuration.fast,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppSpacing.lg, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: isSelected
+                              ? AppColors.primary
+                              : AppColors.surface,
+                          borderRadius:
+                              BorderRadius.circular(AppRadius.chip),
+                          border: Border.all(
+                            color: isSelected
+                                ? AppColors.primary
+                                : AppColors.border,
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (c.value != null) ...[
+                              Text(
+                                c.value == 'Kigali' ? '🇷🇼' : '🇲🇺',
+                                style: const TextStyle(fontSize: 12),
+                              ),
+                              const SizedBox(width: 4),
+                            ],
+                            Text(
+                              c.label,
+                              style: TextStyle(
+                                color: isSelected
+                                    ? Colors.black
+                                    : AppColors.textSecondary,
+                                fontSize: 12,
+                                fontWeight: isSelected
+                                    ? FontWeight.w700
+                                    : FontWeight.w400,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: AppSpacing.md),
+
               // Search bar
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -144,10 +224,80 @@ class HomeScreen extends StatelessWidget {
                 ),
               const SizedBox(height: AppSpacing.xxl),
 
+              // AI Recommendations section
+              if (recommended.isNotEmpty) ...[
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.lg),
+                  child: Row(
+                    children: [
+                      const Text(
+                        'For You',
+                        style: TextStyle(
+                          color: AppColors.textPrimary,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8, vertical: 2),
+                        decoration: BoxDecoration(
+                          gradient: const LinearGradient(
+                            colors: [Color(0xFF7C3AED), Color(0xFFC026D3)],
+                          ),
+                          borderRadius:
+                              BorderRadius.circular(AppRadius.chip),
+                        ),
+                        child: const Text(
+                          'AI Picks',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.3,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: AppSpacing.lg),
+                  child: Text(
+                    'Based on your communities and past events',
+                    style: const TextStyle(
+                      color: AppColors.textSecondary,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.md),
+                SizedBox(
+                  height: 200,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: AppSpacing.lg),
+                    itemCount: recommended.length,
+                    itemBuilder: (context, i) => EventCard(
+                      event: recommended[i],
+                      isCompact: true,
+                      onTap: () => context
+                          .push('/events/${recommended[i].id}'),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.xxl),
+              ],
+
               // Opportunities section
               SectionHeader(
                 title: 'Latest Opportunities',
-                onSeeAll: () {},
+                onSeeAll: () => context.push('/explore'),
               ),
               const SizedBox(height: AppSpacing.md),
               ...feed.opportunities.take(3).map(
@@ -158,7 +308,7 @@ class HomeScreen extends StatelessWidget {
               // Events section
               SectionHeader(
                 title: 'Upcoming Events',
-                onSeeAll: () {},
+                onSeeAll: () => context.push('/explore'),
               ),
               const SizedBox(height: AppSpacing.md),
               SizedBox(

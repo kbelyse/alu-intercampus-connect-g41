@@ -52,9 +52,15 @@ class _ExploreScreenState extends State<ExploreScreen>
             // Header
             Padding(
               padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, 0),
+                  AppSpacing.sm, AppSpacing.lg, AppSpacing.lg, 0),
               child: Row(
                 children: [
+                  IconButton(
+                    onPressed: () => context.pop(),
+                    icon: const Icon(LucideIcons.arrowLeft,
+                        color: AppColors.textPrimary,
+                        size: AppIconSize.standalone),
+                  ),
                   Text(
                     'Explore',
                     style: Theme.of(context).textTheme.displaySmall,
@@ -163,35 +169,30 @@ class _AllTab extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(
                 AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, AppSpacing.sm),
             child: Text(
-              'Recommended for you',
+              'Events',
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
-          SizedBox(
-            height: 160,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(
-                  horizontal: AppSpacing.lg),
-              itemCount: feed.events.take(4).length,
-              itemBuilder: (context, i) => EventCard(
-                event: feed.events[i],
-                isCompact: true,
-                onTap: () =>
-                    context.push('/events/${feed.events[i].id}'),
-              ),
-            ),
+          ...feed.events.map(
+            (e) => EventCard(
+                event: e,
+                onTap: () => context.push('/events/${e.id}')),
           ),
           const SizedBox(height: AppSpacing.lg),
         ],
-        ...feed.events.map(
-          (e) => EventCard(
-              event: e,
-              onTap: () => context.push('/events/${e.id}')),
-        ),
-        ...feed.opportunities.map(
-          (op) => OpportunityCard(opportunity: op),
-        ),
+        if (feed.opportunities.isNotEmpty) ...[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, AppSpacing.sm),
+            child: Text(
+              'Opportunities',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+          ),
+          ...feed.opportunities.map(
+            (op) => OpportunityCard(opportunity: op),
+          ),
+        ],
       ],
     );
   }
@@ -242,12 +243,11 @@ class _OpportunitiesTab extends StatelessWidget {
 class _ClubsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: const EmptyState(
-        message: 'Browse clubs from the Communities tab.',
-        icon: LucideIcons.users,
-      ),
+    return EmptyState(
+      message: 'Browse and join clubs in the Communities tab.',
+      icon: LucideIcons.users,
+      actionLabel: 'Go to Communities',
+      onAction: () => context.go('/communities'),
     );
   }
 }

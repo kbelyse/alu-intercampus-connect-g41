@@ -6,9 +6,7 @@ enum RsvpStatus { going, interested, none }
 class RsvpProvider extends ChangeNotifier {
   final Map<String, RsvpStatus> _rsvps = {
     'e1': RsvpStatus.going,
-    'e2': RsvpStatus.going,
     'e3': RsvpStatus.interested,
-    'e4': RsvpStatus.going,
   };
 
   RsvpStatus getStatus(String eventId) =>

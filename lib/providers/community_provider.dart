@@ -5,7 +5,7 @@ import '../data/mock_data.dart';
 
 class CommunityProvider extends ChangeNotifier {
   final List<Community> _communities = List.from(mockCommunities);
-  final Set<String> _joinedIds = {'c2', 'c4'};
+  final Set<String> _joinedIds = {'c1', 'c2', 'c3'};
   String _searchQuery = '';
 
   List<Community> get allCommunities => _filter(_communities);

@@ -6,6 +6,7 @@ import '../screens/home/home_screen.dart';
 import '../screens/explore/explore_screen.dart';
 import '../screens/create/create_post_screen.dart';
 import '../screens/events/event_detail_screen.dart';
+import '../screens/communities/communities_screen.dart';
 import '../screens/communities/community_detail_screen.dart';
 import '../screens/chats/chats_screen.dart';
 import '../screens/chats/chat_detail_screen.dart';
@@ -37,9 +38,9 @@ final appRouter = GoRouter(
           pageBuilder: (context, state) => _fade(state, const HomeScreen()),
         ),
         GoRoute(
-          path: '/explore',
+          path: '/communities',
           pageBuilder: (context, state) =>
-              _fade(state, const ExploreScreen()),
+              _fade(state, const CommunitiesScreen()),
         ),
         GoRoute(
           path: '/chats',
@@ -52,6 +53,14 @@ final appRouter = GoRouter(
               _fade(state, const ProfileScreen()),
         ),
       ],
+    ),
+
+    // Explore as full-screen push (accessible via "See All" on Home)
+    GoRoute(
+      parentNavigatorKey: _rootKey,
+      path: '/explore',
+      pageBuilder: (context, state) =>
+          _slideUp(state, const ExploreScreen()),
     ),
 
     // Full-screen routes (bypass shell)

@@ -1,0 +1,252 @@
+========================================================
+  ALU INTERCAMPUS CONNECT — GROUP 41 PRESENTATION FILE
+========================================================
+  Team: Benitha | Mordecai | David | Placide | Belyse
+========================================================
+
+
+================================================================
+  SECTION 1: WORK DIVISION & FILE SHARING (GITHUB STRATEGY)
+================================================================
+
+WORK DIVISION
+--------------
+Benitha  → splash_screen.dart + notifications_screen.dart
+Mordecai → home_screen.dart + explore_screen.dart
+David    → event_detail_screen.dart + my_rsvps_screen.dart
+Placide  → chats_screen.dart + chat_detail_screen.dart
+Belyse   → communities_screen.dart + community_detail_screen.dart
+           + create_post_screen.dart + profile_screen.dart
+           + ADDITIONAL FEATURE (AI-powered event recommendations)
+
+
+Step 4 — Each member opens a Pull Request from their branch into main on GitHub.
+  This makes every person's contribution clearly visible.
+
+
+FILE OWNERSHIP SUMMARY
+-----------------------
+Benitha  → lib/screens/onboarding/splash_screen.dart
+           lib/screens/notifications/notifications_screen.dart
+
+Mordecai → lib/screens/home/home_screen.dart
+           lib/screens/explore/explore_screen.dart
+
+David    → lib/screens/events/event_detail_screen.dart
+           lib/screens/profile/my_rsvps_screen.dart
+
+Placide  → lib/screens/chats/chats_screen.dart
+           lib/screens/chats/chat_detail_screen.dart
+
+Belyse   → lib/screens/communities/communities_screen.dart
+           lib/screens/communities/community_detail_screen.dart
+           lib/screens/create/create_post_screen.dart
+           lib/screens/profile/profile_screen.dart
+           + additional features / app-wide improvements
+
+
+================================================================
+  SECTION 2: VIDEO PRESENTATION SCRIPTS
+================================================================
+
+---[ BENITHA — Splash Screen & Notifications ]---
+
+Hey everyone, I'm Benitha and I worked on the onboarding experience
+and the notifications system for our app, ALU Intercampus Connect.
+
+So when you first open the app, you land on this splash screen. We
+kept it clean and simple — it just shows the app logo and name while
+everything loads in the background. First impressions matter, and we
+wanted students to feel like they were opening something polished, not
+just a school project.
+
+Then we have the notifications screen. This is where students get
+updates about everything happening across campuses — new events they
+might like, replies to their posts, updates from communities they
+follow, and reminders for events they RSVPed to.
+
+I designed it so you can see all your alerts in one place without
+having to check multiple tabs. Each notification tells you exactly
+what happened and when, so nothing slips through.
+
+That's my part — back to the team!
+
+
+---[ MORDECAI — Home Feed & Explore ]---
+
+Hi, I'm Mordecai and I handled the Home Feed and the Explore screen.
+
+The home feed is basically the heart of the app. When a student logs
+in, they see a live feed of events and posts from across all ALU
+campuses. It's not just their campus — it's everything, so students
+in Rwanda can see what's happening in Mauritius, and the other way
+around.
+
+Each card in the feed shows the event name, the campus it's coming
+from, how many people are attending, and a quick RSVP button. We
+wanted it to feel like a social feed you actually want to scroll
+through, not a bulletin board.
+
+The explore screen is for when you want to search intentionally. You
+can browse by category — leadership events, hackathons, wellness,
+cultural shows — and filter by campus. So if you're planning a trip
+or you're curious what another campus is up to, this is where you go.
+
+Thanks, handing it over to David.
+
+
+---[ DAVID — Event Detail & My RSVPs ]---
+
+Hey, I'm David, and I built the Event Detail screen and the My RSVPs
+section.
+
+So once you tap on an event from the feed, you land on the event
+detail page. Here you get everything — a banner image, the full
+description, where it's happening, the date and time, and who's
+hosting it. And right there you've got the RSVP button. One tap and
+you're registered.
+
+We made sure the RSVP button is big and easy to find because that's
+the whole point of the app — getting students to actually show up to
+things.
+
+The My RSVPs screen is your personal event tracker. It lists every
+event you've signed up for, sorted by date, so you never forget what
+you committed to. Think of it as your campus planner built right into
+the app.
+
+These two screens together make the whole event experience feel
+complete — discover, read, register, and track. That's it from me,
+over to Placide.
+
+
+---[ PLACIDE — Chats & Chat Detail ]---
+
+Hi everyone, I'm Placide and I worked on the communication side of
+the app — the Chats screen and the Chat Detail screen.
+
+The Chats screen is your messaging hub. It shows all your ongoing
+conversations — whether that's a one-on-one message with a classmate
+or a group chat for a community or event. You can see who you've
+talked to recently, the last message, and whether there are unread
+messages.
+
+When you tap into a conversation, you get to the Chat Detail screen.
+This is where the actual messaging happens — it's a clean chat
+interface where you can send messages, see replies in real time, and
+stay connected with people across campuses.
+
+We added this because a lot of cross-campus collaboration falls apart
+not because students don't want to connect, but because they don't
+have a shared space to communicate. This solves that.
+
+Alright, I'll pass it to Belyse to wrap us up.
+
+
+---[ BELYSE — Communities, Create Post, Profile & Additional Feature ]---
+
+Hi, I'm Belyse, and I worked on the communities feature, the create
+post screen, the profile, and I also added an extra feature to the app.
+
+So the Communities screen is where students can find and join groups
+built around shared interests — like a debate club, a coding society,
+or a cultural association. These communities aren't limited to one
+campus, so you can connect with students from Mauritius, Rwanda, or
+wherever ALU is.
+
+When you tap into a community, the Community Detail screen shows you
+recent posts, upcoming events tied to that group, and the members.
+You can also create a new post from there using the Create Post screen
+— add a title, write your content, and publish it straight to the
+community.
+
+The Profile screen shows your own page — your name, bio, campus, the
+communities you've joined, and the events you're attending.
+
+Now, for the additional feature I added — I implemented an
+AI-powered event recommendation system. Based on the communities
+you've joined and the events you've RSVPed to in the past, the app
+learns your interests and surfaces events that are actually relevant
+to you. So instead of scrolling through everything, the home feed
+gets smarter the more you use it.
+
+That's our full app — ALU Intercampus Connect. Thanks for watching!
+
+
+================================================================
+  SECTION 3: QUESTIONS & ANSWERS
+================================================================
+
+Q2. Our app name:
+------------------
+ALU Intercampus Connect
+
+This name was chosen because it directly describes what the app does:
+it connects students across the African Leadership University
+ecosystem — across all campuses, not just one. "Intercampus" makes
+the cross-campus mission clear from the name alone.
+
+
+Q3. What changes our team is planning to the screens:
+------------------------------------------------------
+Here are the improvements we are planning or have already implemented:
+
+- Home Feed: We're adding a campus filter bar at the top so students
+  can quickly toggle between "All Campuses", "My Campus", or a
+  specific ALU campus without having to go to Explore.
+
+- Event Detail: We moved the RSVP button to a fixed position at the
+  bottom of the screen so it's always visible — you don't have to
+  scroll down to find it.
+
+- Communities: We're planning to add a "Trending" section that shows
+  the most active communities this week, making it easier for new
+  students to find where the energy is.
+
+- Notifications: We're planning to add notification categories
+  (Events, Communities, Messages) so students can filter what they
+  see instead of seeing everything mixed together.
+
+- Explore: We're planning to add a map view option so students can
+  visually see what's happening by campus location.
+
+
+Q4. Our colour palette:
+------------------------
+We kept ALU's core red and white as the primary brand colours, but
+we extended the palette slightly:
+
+  Primary Red  : #C0392B  (ALU signature red)
+  White        : #FFFFFF  (backgrounds, cards)
+  Dark Text    : #1A1A1A  (headings, body text)
+  Light Grey   : #F5F5F5  (secondary backgrounds, dividers)
+  Accent Red   : #E74C3C  (buttons, active states, highlights)
+
+Sticking with ALU's colours was intentional — the app is meant to
+feel like an official ALU platform, not a third-party tool.
+Students should open it and immediately feel like it belongs to their
+campus identity.
+
+
+Q5. How many screens has our team designed or planned so far?
+--------------------------------------------------------------
+We have designed and implemented 12 screens:
+
+  1.  Splash Screen          (onboarding/splash_screen.dart)
+  2.  Notifications Screen   (notifications/notifications_screen.dart)
+  3.  Home Feed Screen       (home/home_screen.dart)
+  4.  Explore Screen         (explore/explore_screen.dart)
+  5.  Event Detail Screen    (events/event_detail_screen.dart)
+  6.  My RSVPs Screen        (profile/my_rsvps_screen.dart)
+  7.  Chats Screen           (chats/chats_screen.dart)
+  8.  Chat Detail Screen     (chats/chat_detail_screen.dart)
+  9.  Communities Screen     (communities/communities_screen.dart)
+  10. Community Detail Screen(communities/community_detail_screen.dart)
+  11. Create Post Screen     (create/create_post_screen.dart)
+  12. Profile Screen         (profile/profile_screen.dart)
+
+Every screen is fully implemented and functional in Flutter.
+
+========================================================
+  END OF FILE
+========================================================

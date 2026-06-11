@@ -35,7 +35,7 @@ final List<Event> mockEvents = [
     title: 'ALU Entrepreneurship Pitch Night',
     description:
         'Showcase your startup idea to a panel of investors and industry leaders. Network with fellow entrepreneurs and get feedback from experienced mentors. This is your chance to pitch, connect, and potentially secure seed funding for your venture.',
-    startDate: DateTime(2026, 5, 24, 18, 0),
+    startDate: DateTime(2026, 7, 5, 18, 0),
     campus: 'Kigali',
     category: 'Startup',
     organizer: 'Entrepreneurship Club',
@@ -50,7 +50,7 @@ final List<Event> mockEvents = [
     title: 'AI for Social Impact Workshop',
     description:
         'Explore how artificial intelligence can be applied to solve pressing social challenges across Africa. Hands-on sessions with real datasets and tools. Bring your laptop and curiosity.',
-    startDate: DateTime(2026, 6, 5, 9, 0),
+    startDate: DateTime(2026, 7, 12, 9, 0),
     campus: 'Mauritius',
     category: 'Workshop',
     organizer: 'Tech & Innovation Hub',
@@ -65,7 +65,7 @@ final List<Event> mockEvents = [
     title: 'Design Thinking Bootcamp',
     description:
         'A full-day immersive bootcamp on human-centered design. Learn the five stages of design thinking through practical challenges and team exercises.',
-    startDate: DateTime(2026, 5, 30, 8, 30),
+    startDate: DateTime(2026, 7, 19, 8, 30),
     campus: 'Kigali',
     category: 'Workshop',
     organizer: 'ALU Academic Team',
@@ -80,8 +80,8 @@ final List<Event> mockEvents = [
     title: 'ALU Climate Action Week',
     description:
         'A week-long series of events, panels, and community projects focused on climate change solutions in Africa. Open to both campuses with hybrid participation available.',
-    startDate: DateTime(2026, 5, 26),
-    endDate: DateTime(2026, 5, 30),
+    startDate: DateTime(2026, 7, 21),
+    endDate: DateTime(2026, 7, 25),
     campus: 'Both',
     category: 'Community',
     organizer: 'ALU Climate Action Group',
@@ -96,7 +96,7 @@ final List<Event> mockEvents = [
     title: 'Build Your First MVP Workshop',
     description:
         'Step-by-step guide to building a minimum viable product from idea to prototype. Covering lean startup methodology, rapid prototyping, and user testing basics.',
-    startDate: DateTime(2026, 6, 2, 10, 0),
+    startDate: DateTime(2026, 7, 26, 10, 0),
     campus: 'Kigali',
     category: 'Startup',
     organizer: 'Entrepreneurship Club',
@@ -112,7 +112,7 @@ final List<Event> mockEvents = [
     title: 'Campus Ambassador Program Info Session',
     description:
         'Learn about the ALU Campus Ambassador Program and how you can become a brand ambassador representing ALU in your community. Application period opens after the session.',
-    startDate: DateTime(2026, 5, 22, 14, 0),
+    startDate: DateTime(2026, 8, 2, 14, 0),
     campus: 'Mauritius',
     category: 'Leadership',
     organizer: 'Student Affairs Office',
@@ -127,7 +127,7 @@ final List<Event> mockEvents = [
     title: 'Pan-African Debate Championship',
     description:
         'Teams from across Africa compete in this prestigious annual debate championship hosted by ALU Kigali. Topics cover politics, economics, and social issues facing the continent.',
-    startDate: DateTime(2026, 6, 10, 9, 0),
+    startDate: DateTime(2026, 8, 8, 9, 0),
     campus: 'Kigali',
     category: 'Academic',
     organizer: 'ALU Debate Society',
@@ -142,7 +142,7 @@ final List<Event> mockEvents = [
     title: 'Women in Tech Summit',
     description:
         'A one-day summit celebrating and empowering women in technology. Features keynotes, panel discussions, mentorship sessions, and networking opportunities with industry leaders.',
-    startDate: DateTime(2026, 6, 15, 9, 0),
+    startDate: DateTime(2026, 8, 16, 9, 0),
     campus: 'Mauritius',
     category: 'Leadership',
     organizer: 'Women in Leadership',

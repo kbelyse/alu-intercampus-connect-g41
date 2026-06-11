@@ -13,14 +13,14 @@ class MainScaffold extends StatelessWidget {
 
   static const _tabs = [
     _TabItem(icon: LucideIcons.home, label: 'Home', path: '/home'),
-    _TabItem(icon: LucideIcons.compass, label: 'Explore', path: '/explore'),
+    _TabItem(icon: LucideIcons.users, label: 'Communities', path: '/communities'),
     _TabItem(icon: LucideIcons.messageCircle, label: 'Chats', path: '/chats'),
     _TabItem(icon: LucideIcons.user, label: 'Profile', path: '/profile'),
   ];
 
   int _currentIndex(BuildContext context) {
     final location = GoRouterState.of(context).uri.toString();
-    if (location.startsWith('/explore')) return 1;
+    if (location.startsWith('/communities')) return 1;
     if (location.startsWith('/chats')) return 2;
     if (location.startsWith('/profile')) return 3;
     return 0;
