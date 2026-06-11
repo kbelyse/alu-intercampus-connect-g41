@@ -22,6 +22,11 @@ class RsvpProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void reset() {
+    _rsvps.clear();
+    notifyListeners();
+  }
+
   List<String> getEventIdsByStatus(RsvpStatus status) =>
       _rsvps.entries
           .where((e) => e.value == status)
