@@ -12,13 +12,8 @@ class ChatProvider extends ChangeNotifier {
 
   List<ChatRoom> get rooms => _rooms;
 
-  ChatRoom? getRoom(String id) {
-    try {
-      return _rooms.firstWhere((r) => r.id == id);
-    } catch (_) {
-      return null;
-    }
-  }
+  ChatRoom? getRoom(String id) =>
+    _rooms.where((r) => r.id == id).firstOrNull;
 
   List<Message> getMessages(String roomId) =>
       _messages[roomId] ?? [];
