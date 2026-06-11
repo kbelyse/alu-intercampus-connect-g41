@@ -1,7 +1,9 @@
 // Community list card with colored initial circle, member count, and join button.
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../core/constants.dart';
 import '../../models/community.dart';
+import '../common/shimmer_box.dart';
 
 class CommunityCard extends StatelessWidget {
   final Community community;
@@ -37,20 +39,30 @@ class CommunityCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Container(
-              width: 44,
-              height: 44,
-              decoration: BoxDecoration(
-                color: _color.withOpacity(0.2),
-                shape: BoxShape.circle,
-              ),
-              alignment: Alignment.center,
-              child: Text(
-                community.name.substring(0, 1),
-                style: TextStyle(
-                  color: _color,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
+            ClipOval(
+              child: CachedNetworkImage(
+                imageUrl: community.bannerImageUrl,
+                width: 44,
+                height: 44,
+                fit: BoxFit.cover,
+                placeholder: (context, url) =>
+                    const ShimmerBox(width: 44, height: 44, borderRadius: 22),
+                errorWidget: (context, url, error) => Container(
+                  width: 44,
+                  height: 44,
+                  decoration: BoxDecoration(
+                    color: _color.withValues(alpha: 0.2),
+                    shape: BoxShape.circle,
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    community.name.substring(0, 1),
+                    style: TextStyle(
+                      color: _color,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -98,7 +110,7 @@ class CommunityCard extends StatelessWidget {
                     horizontal: AppSpacing.md, vertical: 6),
                 decoration: BoxDecoration(
                   color: isJoined
-                      ? AppColors.success.withOpacity(0.2)
+                      ? AppColors.success.withValues(alpha: 0.2)
                       : Colors.transparent,
                   borderRadius: BorderRadius.circular(AppRadius.chip),
                   border: Border.all(

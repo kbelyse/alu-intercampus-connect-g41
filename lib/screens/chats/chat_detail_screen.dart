@@ -1,10 +1,11 @@
 // Chat detail with message bubbles, reply, reactions, file messages, and input bar.
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_flutter/lucide_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import '../../core/constants.dart';
+import '../../data/mock_data.dart';
 import '../../providers/auth_provider.dart';
 import '../../providers/chat_provider.dart';
 import '../../models/message.dart';
@@ -88,6 +89,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
               color: room != null
                   ? Color(int.parse('FF${room.colorHex}', radix: 16))
                   : AppColors.primary,
+              imageUrl: room?.avatarUrl,
             ),
             const SizedBox(width: AppSpacing.sm),
             Expanded(
@@ -161,7 +163,13 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                       onLongPress: () =>
                           setState(() => _replyTo = msg),
                       child: _MessageBubble(
-                          message: msg, isMe: isMe),
+                        message: msg,
+                        isMe: isMe,
+                        senderAvatarUrl: mockUsers
+                            .where((u) => u.id == msg.senderId)
+                            .map((u) => u.avatarUrl)
+                            .firstOrNull,
+                      ),
                     ),
                     const SizedBox(height: AppSpacing.sm),
                   ],
@@ -287,8 +295,13 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
 class _MessageBubble extends StatelessWidget {
   final Message message;
   final bool isMe;
+  final String? senderAvatarUrl;
 
-  const _MessageBubble({required this.message, required this.isMe});
+  const _MessageBubble({
+    required this.message,
+    required this.isMe,
+    this.senderAvatarUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -306,13 +319,26 @@ class _MessageBubble extends StatelessWidget {
               Padding(
                 padding:
                     const EdgeInsets.only(left: AppSpacing.sm, bottom: 3),
-                child: Text(
-                  message.senderName,
-                  style: const TextStyle(
-                    color: AppColors.primary,
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                  ),
+                child: Row(
+                  children: [
+                    AvatarCircle(
+                      initials: message.senderName.isNotEmpty
+                          ? message.senderName.substring(0, 2).toUpperCase()
+                          : '??',
+                      size: 20,
+                      fontSize: 8,
+                      imageUrl: senderAvatarUrl,
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      message.senderName,
+                      style: const TextStyle(
+                        color: AppColors.primary,
+                        fontSize: 11,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
@@ -358,7 +384,7 @@ class _MessageBubble extends StatelessWidget {
                 ),
                 border: isMe
                     ? Border.all(
-                        color: AppColors.primary.withOpacity(0.3))
+                        color: AppColors.primary.withValues(alpha: 0.3))
                     : null,
               ),
               child: message.type == MessageType.file

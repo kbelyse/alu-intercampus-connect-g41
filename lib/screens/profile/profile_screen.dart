@@ -1,7 +1,7 @@
 // Profile screen with avatar, stats, badges, and menu list.
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_flutter/lucide_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants.dart';
 import '../../providers/auth_provider.dart';
@@ -56,8 +56,9 @@ class ProfileScreen extends StatelessWidget {
                 children: [
                   AvatarCircle(
                     initials: user.initials,
-                    size: 88,
+                    size: 100,
                     fontSize: 28,
+                    imageUrl: user.avatarUrl,
                   ),
                   const SizedBox(height: AppSpacing.lg),
                   Text(
@@ -152,7 +153,7 @@ class ProfileScreen extends StatelessWidget {
                       color: AppColors.elevated,
                       borderRadius: BorderRadius.circular(AppRadius.chip),
                       border: Border.all(
-                          color: AppColors.primary.withOpacity(0.4)),
+                          color: AppColors.primary.withValues(alpha: 0.4)),
                     ),
                     child: Text(
                       '${icons[i % icons.length]} ${user.badges[i]}',
@@ -273,7 +274,7 @@ class _MenuRow extends StatelessWidget {
               width: 36,
               height: 36,
               decoration: BoxDecoration(
-                color: AppColors.primary.withOpacity(0.1),
+                color: AppColors.primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
               alignment: Alignment.center,

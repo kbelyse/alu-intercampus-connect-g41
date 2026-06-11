@@ -77,6 +77,7 @@ class HomeScreen extends StatelessWidget {
                           child: AvatarCircle(
                             initials: user?.initials ?? 'AU',
                             size: 44,
+                            imageUrl: user?.avatarUrl,
                           ),
                         ),
                         if (notif.unreadCount > 0)

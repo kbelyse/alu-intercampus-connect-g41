@@ -1,6 +1,6 @@
 // Reusable search bar with optional mic icon used across Home and Explore.
 import 'package:flutter/material.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_flutter/lucide_flutter.dart';
 import '../../core/constants.dart';
 
 class AppSearchBar extends StatelessWidget {

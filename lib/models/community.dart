@@ -8,6 +8,7 @@ class Community {
   final String lastActivity;
   final bool isActiveNow;
   final String colorHex;
+  final String bannerImageUrl;
 
   const Community({
     required this.id,
@@ -18,5 +19,6 @@ class Community {
     required this.lastActivity,
     this.isActiveNow = false,
     required this.colorHex,
+    required this.bannerImageUrl,
   });
 }

@@ -28,7 +28,7 @@ class ChatPreviewCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(
             horizontal: AppSpacing.lg, vertical: AppSpacing.md),
         color: hasUnread
-            ? AppColors.surface.withOpacity(0.8)
+            ? AppColors.surface.withValues(alpha: 0.8)
             : Colors.transparent,
         child: Row(
           children: [
@@ -36,6 +36,7 @@ class ChatPreviewCard extends StatelessWidget {
               initials: room.name.substring(0, 2).toUpperCase(),
               size: 48,
               color: Color(int.parse('FF${room.colorHex}', radix: 16)),
+              imageUrl: room.avatarUrl,
             ),
             const SizedBox(width: AppSpacing.md),
             Expanded(

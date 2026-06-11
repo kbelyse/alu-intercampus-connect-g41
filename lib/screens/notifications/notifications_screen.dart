@@ -1,7 +1,7 @@
 // Notifications screen with filter chips, grouped by Today/Yesterday/Earlier.
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_flutter/lucide_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants.dart';
 import '../../models/notification_item.dart';

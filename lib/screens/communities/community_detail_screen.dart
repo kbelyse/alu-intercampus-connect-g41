@@ -1,12 +1,14 @@
 // Community detail with stats, posts/events/members tabs, and join/message button.
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_flutter/lucide_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../core/constants.dart';
 import '../../data/mock_data.dart';
 import '../../providers/community_provider.dart';
 import '../../widgets/common/avatar_circle.dart';
+import '../../widgets/common/shimmer_box.dart';
 import '../../widgets/cards/event_card.dart';
 
 class CommunityDetailScreen extends StatefulWidget {
@@ -89,23 +91,43 @@ class _CommunityDetailScreenState extends State<CommunityDetailScreen>
                 child: Column(
                   children: [
                     // Banner
-                    Container(
-                      height: 160,
+                    SizedBox(
+                      height: 200,
                       width: double.infinity,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            color.withOpacity(0.8),
-                            AppColors.background,
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                      ),
-                      child: Center(
-                        child: Icon(LucideIcons.users,
-                            size: 64,
-                            color: Colors.white.withOpacity(0.3)),
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          CachedNetworkImage(
+                            imageUrl: community.bannerImageUrl,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => const ShimmerBox(
+                              width: double.infinity,
+                              height: 200,
+                              borderRadius: 0,
+                            ),
+                            errorWidget: (context, url, error) => Container(
+                              color: color.withValues(alpha: 0.3),
+                              child: Center(
+                                child: Icon(LucideIcons.users,
+                                    size: 64,
+                                    color: Colors.white.withValues(alpha: 0.3)),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.transparent,
+                                  AppColors.background,
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                stops: const [0.5, 1.0],
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
 

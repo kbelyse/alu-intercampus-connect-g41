@@ -1,7 +1,7 @@
 // Chats list with active now row, chat previews, and swipe-to-archive.
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_flutter/lucide_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants.dart';
 import '../../providers/chat_provider.dart';
@@ -83,6 +83,7 @@ class ChatsScreen extends StatelessWidget {
                             color: Color(int.parse(
                                 'FF${room.colorHex}',
                                 radix: 16)),
+                            imageUrl: room.avatarUrl,
                           ),
                           Positioned(
                             right: 0,

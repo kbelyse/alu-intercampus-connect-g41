@@ -1,8 +1,10 @@
 // Opportunity card with left colored bar, title, deadline, campus, and type chip.
 import 'package:flutter/material.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_flutter/lucide_flutter.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../core/constants.dart';
 import '../../models/opportunity.dart';
+import '../common/shimmer_box.dart';
 import 'package:intl/intl.dart';
 
 class OpportunityCard extends StatelessWidget {
@@ -55,10 +57,25 @@ class OpportunityCard extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          const Icon(
-                            LucideIcons.arrowRight,
-                            size: AppIconSize.inline,
-                            color: AppColors.textSecondary,
+                          const SizedBox(width: AppSpacing.sm),
+                          // Thumbnail
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: CachedNetworkImage(
+                              imageUrl: opportunity.imageUrl,
+                              width: 60,
+                              height: 60,
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) =>
+                                  const ShimmerBox(width: 60, height: 60, borderRadius: 8),
+                              errorWidget: (context, url, error) => Container(
+                                width: 60,
+                                height: 60,
+                                color: _color.withValues(alpha: 0.2),
+                                child: Icon(LucideIcons.image,
+                                    color: _color, size: 20),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -95,7 +112,7 @@ class OpportunityCard extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 3),
                             decoration: BoxDecoration(
-                              color: _color.withOpacity(0.15),
+                              color: _color.withValues(alpha: 0.15),
                               borderRadius:
                                   BorderRadius.circular(AppRadius.chip),
                             ),

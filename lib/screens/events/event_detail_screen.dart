@@ -1,14 +1,16 @@
 // Event detail screen with hero header, info rows, organizer, and RSVP buttons.
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_flutter/lucide_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../core/constants.dart';
 import '../../data/mock_data.dart';
 import '../../models/event.dart';
 import '../../providers/rsvp_provider.dart';
 import '../../widgets/common/avatar_circle.dart';
+import '../../widgets/common/shimmer_box.dart';
 import '../../widgets/cards/event_card.dart';
 
 class EventDetailScreen extends StatefulWidget {
@@ -96,45 +98,54 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 flexibleSpace: FlexibleSpaceBar(
                   background: Hero(
                     tag: 'event_hero_${event.id}',
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            _color.withOpacity(0.85),
-                            AppColors.background,
-                          ],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
-                      ),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            right: -20,
-                            top: -20,
-                            child: Icon(LucideIcons.zap,
-                                size: 200,
-                                color: Colors.white.withOpacity(0.05)),
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        CachedNetworkImage(
+                          imageUrl: event.imageUrl,
+                          fit: BoxFit.cover,
+                          height: 250,
+                          placeholder: (context, url) => const ShimmerBox(
+                            width: double.infinity,
+                            height: 250,
+                            borderRadius: 0,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(
-                                AppSpacing.xl, 80, AppSpacing.xl, AppSpacing.xl),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  event.title,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displaySmall
-                                      ?.copyWith(color: Colors.white),
-                                ),
+                          errorWidget: (context, url, error) => Container(
+                            color: _color.withValues(alpha: 0.3),
+                          ),
+                        ),
+                        // Gradient overlay transparent to black at bottom
+                        Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.transparent,
+                                Colors.black.withValues(alpha: 0.8),
                               ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              stops: const [0.4, 1.0],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(
+                              AppSpacing.xl, 80, AppSpacing.xl, AppSpacing.xl),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                event.title,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall
+                                    ?.copyWith(color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -154,7 +165,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 10, vertical: 4),
                               decoration: BoxDecoration(
-                                color: _color.withOpacity(0.15),
+                                color: _color.withValues(alpha: 0.15),
                                 borderRadius:
                                     BorderRadius.circular(AppRadius.chip),
                               ),
@@ -463,7 +474,7 @@ class _RsvpButton extends StatelessWidget {
       onPressed: isGoing ? onCancel : onGoing,
       style: ElevatedButton.styleFrom(
         backgroundColor:
-            isGoing ? AppColors.success.withOpacity(0.2) : AppColors.primary,
+            isGoing ? AppColors.success.withValues(alpha: 0.2) : AppColors.primary,
         foregroundColor: isGoing ? AppColors.success : Colors.black,
         padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
         elevation: 0,

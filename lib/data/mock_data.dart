@@ -17,7 +17,17 @@ final mockCurrentUser = const AppUser(
   communities: 5,
   connections: 87,
   badges: ['Early Adopter', 'Event Organizer', 'Community Builder'],
+  avatarUrl: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=80',
 );
+
+final List<AppUser> mockUsers = [
+  AppUser(id: 'u1', name: 'Aline Umuhoza', initials: 'AU', campus: 'Kigali Campus', email: 'a.umuhoza@alustudent.com', avatarUrl: 'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=80'),
+  AppUser(id: 'u2', name: 'Fatima Diallo', initials: 'FD', campus: 'Mauritius Campus', email: 'f.diallo@alustudent.com', avatarUrl: 'https://images.unsplash.com/photo-1580894732444-8ecded7900cd?w=200&q=80'),
+  AppUser(id: 'u3', name: 'David Osei', initials: 'DO', campus: 'Kigali Campus', email: 'd.osei@alustudent.com', avatarUrl: 'https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=200&q=80'),
+  AppUser(id: 'u4', name: 'Jean Mugisha', initials: 'JM', campus: 'Kigali Campus', email: 'j.mugisha@alustudent.com', avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80'),
+  AppUser(id: 'u5', name: 'Sarah Kamau', initials: 'SK', campus: 'Mauritius Campus', email: 's.kamau@alustudent.com', avatarUrl: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=200&q=80'),
+  AppUser(id: 'u6', name: 'Emmanuel Nkosi', initials: 'EN', campus: 'Mauritius Campus', email: 'e.nkosi@alustudent.com', avatarUrl: 'https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?w=200&q=80'),
+];
 
 final List<Event> mockEvents = [
   Event(
@@ -33,6 +43,7 @@ final List<Event> mockEvents = [
     interestedCount: 12,
     tags: ['startup', 'pitch', 'investment'],
     location: 'Main Auditorium, Kigali Campus',
+    imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80',
   ),
   Event(
     id: 'e2',
@@ -47,6 +58,7 @@ final List<Event> mockEvents = [
     interestedCount: 20,
     tags: ['AI', 'social impact', 'tech'],
     location: 'Innovation Lab, Mauritius Campus',
+    imageUrl: 'https://images.unsplash.com/photo-1591453089343-d013b3520de0?w=800&q=80',
   ),
   Event(
     id: 'e3',
@@ -61,6 +73,7 @@ final List<Event> mockEvents = [
     interestedCount: 25,
     tags: ['design', 'innovation', 'workshop'],
     location: 'Creative Studio, Kigali Campus',
+    imageUrl: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800&q=80',
   ),
   Event(
     id: 'e4',
@@ -76,6 +89,7 @@ final List<Event> mockEvents = [
     interestedCount: 85,
     tags: ['climate', 'sustainability', 'community'],
     location: 'Both Campuses + Online',
+    imageUrl: 'https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=800&q=80',
   ),
   Event(
     id: 'e5',
@@ -91,6 +105,7 @@ final List<Event> mockEvents = [
     maxParticipants: 50,
     tags: ['startup', 'MVP', 'product'],
     location: 'Startup Hub, Kigali Campus',
+    imageUrl: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80',
   ),
   Event(
     id: 'e6',
@@ -105,6 +120,7 @@ final List<Event> mockEvents = [
     interestedCount: 30,
     tags: ['leadership', 'ambassador', 'opportunity'],
     location: 'Conference Room B, Mauritius Campus',
+    imageUrl: 'https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&q=80',
   ),
   Event(
     id: 'e7',
@@ -119,6 +135,7 @@ final List<Event> mockEvents = [
     interestedCount: 60,
     tags: ['debate', 'Africa', 'competition'],
     location: 'Main Hall, Kigali Campus',
+    imageUrl: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80',
   ),
   Event(
     id: 'e8',
@@ -133,6 +150,7 @@ final List<Event> mockEvents = [
     interestedCount: 90,
     tags: ['women', 'tech', 'leadership', 'empowerment'],
     location: 'Grand Hall, Mauritius Campus',
+    imageUrl: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d4?w=800&q=80',
   ),
 ];
 
@@ -147,6 +165,7 @@ final List<Opportunity> mockOpportunities = [
     deadline: DateTime(2026, 6, 20),
     category: 'Community',
     tags: ['sustainability', 'competition', 'prize'],
+    imageUrl: 'https://images.unsplash.com/photo-1497435334941-8c899a1b9e4b?w=800&q=80',
   ),
   Opportunity(
     id: 'op2',
@@ -158,6 +177,7 @@ final List<Opportunity> mockOpportunities = [
     deadline: DateTime(2026, 6, 30),
     category: 'Leadership',
     tags: ['Google', 'leadership', 'tech', 'GDSC'],
+    imageUrl: 'https://images.unsplash.com/photo-1573495627361-d9b87960b12d?w=800&q=80',
   ),
   Opportunity(
     id: 'op3',
@@ -169,6 +189,7 @@ final List<Opportunity> mockOpportunities = [
     deadline: DateTime(2026, 7, 15),
     category: 'Academic',
     tags: ['research', 'grant', 'academic'],
+    imageUrl: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80',
   ),
   Opportunity(
     id: 'op4',
@@ -180,6 +201,7 @@ final List<Opportunity> mockOpportunities = [
     deadline: DateTime(2026, 6, 25),
     category: 'Startup',
     tags: ['startup', 'incubator', 'funding'],
+    imageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
   ),
   Opportunity(
     id: 'op5',
@@ -191,6 +213,7 @@ final List<Opportunity> mockOpportunities = [
     deadline: DateTime(2026, 6, 10),
     category: 'Community',
     tags: ['ambassador', 'community', 'brand'],
+    imageUrl: 'https://images.unsplash.com/photo-1558008258-3256797b43f3?w=800&q=80',
   ),
 ];
 
@@ -205,6 +228,7 @@ final List<Community> mockCommunities = [
     lastActivity: 'Active 1h ago',
     isActiveNow: true,
     colorHex: 'E74C3C',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80',
   ),
   const Community(
     id: 'c2',
@@ -216,6 +240,7 @@ final List<Community> mockCommunities = [
     lastActivity: 'Active now',
     isActiveNow: true,
     colorHex: 'F5A623',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80',
   ),
   const Community(
     id: 'c3',
@@ -227,6 +252,7 @@ final List<Community> mockCommunities = [
     lastActivity: 'Active 2h ago',
     isActiveNow: false,
     colorHex: 'FF6B9D',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1573164713714-d95e436ab8d4?w=800&q=80',
   ),
   const Community(
     id: 'c4',
@@ -238,6 +264,7 @@ final List<Community> mockCommunities = [
     lastActivity: 'Active 30m ago',
     isActiveNow: true,
     colorHex: '6C63FF',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
   ),
   const Community(
     id: 'c5',
@@ -249,6 +276,7 @@ final List<Community> mockCommunities = [
     lastActivity: 'Active 5h ago',
     isActiveNow: false,
     colorHex: '2ECC71',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=800&q=80',
   ),
   const Community(
     id: 'c6',
@@ -260,6 +288,7 @@ final List<Community> mockCommunities = [
     lastActivity: 'Active yesterday',
     isActiveNow: false,
     colorHex: '3BAFDA',
+    bannerImageUrl: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80',
   ),
 ];
 
@@ -273,6 +302,7 @@ final List<ChatRoom> mockChatRooms = [
     unreadCount: 5,
     isActiveNow: true,
     colorHex: 'F5A623',
+    avatarUrl: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200&q=80',
   ),
   ChatRoom(
     id: 'cr2',
@@ -283,6 +313,7 @@ final List<ChatRoom> mockChatRooms = [
     unreadCount: 2,
     isActiveNow: true,
     colorHex: '6C63FF',
+    avatarUrl: 'https://images.unsplash.com/photo-1591453089343-d013b3520de0?w=200&q=80',
   ),
   ChatRoom(
     id: 'cr3',
@@ -293,6 +324,7 @@ final List<ChatRoom> mockChatRooms = [
     unreadCount: 0,
     isActiveNow: false,
     colorHex: '2ECC71',
+    avatarUrl: 'https://images.unsplash.com/photo-1529390079861-591de354faf5?w=200&q=80',
   ),
 ];
 

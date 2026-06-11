@@ -1,6 +1,6 @@
 // Notification row card with type-coded icon, title, description, and timestamp.
 import 'package:flutter/material.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_flutter/lucide_flutter.dart';
 import '../../core/constants.dart';
 import '../../models/notification_item.dart';
 import 'package:intl/intl.dart';

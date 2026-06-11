@@ -4,10 +4,11 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../core/constants.dart';
 import '../../providers/community_provider.dart';
+import '../../models/community.dart';
 import '../../widgets/common/app_search_bar.dart';
 import '../../widgets/common/empty_state.dart';
 import '../../widgets/cards/community_card.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_flutter/lucide_flutter.dart';
 
 class CommunitiesScreen extends StatefulWidget {
   const CommunitiesScreen({super.key});

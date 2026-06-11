@@ -8,6 +8,7 @@ class Opportunity {
   final DateTime deadline;
   final String category;
   final List<String> tags;
+  final String imageUrl;
 
   const Opportunity({
     required this.id,
@@ -18,5 +19,6 @@ class Opportunity {
     required this.deadline,
     required this.category,
     this.tags = const [],
+    required this.imageUrl,
   });
 }

@@ -1,8 +1,10 @@
 // Event card with left colored bar, title, date, campus, and category chip.
 import 'package:flutter/material.dart';
-import 'package:lucide_icons/lucide_icons.dart';
+import 'package:lucide_flutter/lucide_flutter.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../core/constants.dart';
 import '../../models/event.dart';
+import '../common/shimmer_box.dart';
 import 'package:intl/intl.dart';
 
 class EventCard extends StatelessWidget {
@@ -61,10 +63,25 @@ class EventCard extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
-                          const Icon(
-                            LucideIcons.arrowRight,
-                            size: AppIconSize.inline,
-                            color: AppColors.textSecondary,
+                          const SizedBox(width: AppSpacing.sm),
+                          // Thumbnail
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: CachedNetworkImage(
+                              imageUrl: event.imageUrl,
+                              width: 60,
+                              height: 60,
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) =>
+                                  const ShimmerBox(width: 60, height: 60, borderRadius: 8),
+                              errorWidget: (context, url, error) => Container(
+                                width: 60,
+                                height: 60,
+                                color: _color.withValues(alpha: 0.2),
+                                child: Icon(LucideIcons.image,
+                                    color: _color, size: 20),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -99,7 +116,7 @@ class EventCard extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 8, vertical: 3),
                         decoration: BoxDecoration(
-                          color: _color.withOpacity(0.15),
+                          color: _color.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(AppRadius.chip),
                         ),
                         child: Text(
@@ -130,92 +147,114 @@ class EventCard extends StatelessWidget {
         margin: const EdgeInsets.only(right: AppSpacing.md),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppRadius.card),
-          gradient: LinearGradient(
-            colors: [_color.withOpacity(0.8), AppColors.elevated],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+          color: AppColors.elevated,
         ),
-        child: Stack(
-          children: [
-            Positioned(
-              right: -8,
-              top: -8,
-              child: Icon(
-                LucideIcons.zap,
-                size: 70,
-                color: Colors.white.withOpacity(0.07),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(AppRadius.card),
+          child: Stack(
+            children: [
+              // Background image
+              Positioned.fill(
+                child: CachedNetworkImage(
+                  imageUrl: event.imageUrl,
+                  fit: BoxFit.cover,
+                  placeholder: (context, url) => ShimmerBox(
+                    width: 180,
+                    height: double.infinity,
+                    borderRadius: AppRadius.card,
+                  ),
+                  errorWidget: (context, url, error) => Container(
+                    color: _color.withValues(alpha: 0.3),
+                  ),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(AppSpacing.lg),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                    decoration: BoxDecoration(
-                      color: Colors.black26,
-                      borderRadius: BorderRadius.circular(AppRadius.chip),
-                    ),
-                    child: Text(
-                      event.category,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w600),
+              // Dark gradient overlay
+              Positioned.fill(
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.transparent,
+                        const Color(0xFF0A0B14).withValues(alpha: 0.9),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: const [0.2, 1.0],
                     ),
                   ),
-                  const Spacer(),
-                  Text(
-                    event.title,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 6),
-                  Row(
-                    children: [
-                      const Icon(LucideIcons.calendar,
-                          size: 11, color: Colors.white70),
-                      const SizedBox(width: 3),
-                      Text(
-                        DateFormat('MMM d').format(event.startDate),
+                ),
+              ),
+              // Content
+              Padding(
+                padding: const EdgeInsets.all(AppSpacing.lg),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: Colors.black26,
+                        borderRadius: BorderRadius.circular(AppRadius.chip),
+                      ),
+                      child: Text(
+                        event.category,
                         style: const TextStyle(
-                            color: Colors.white70, fontSize: 11),
+                            color: Colors.white,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600),
                       ),
-                      const Spacer(),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 6, vertical: 2),
-                        decoration: BoxDecoration(
-                          color: Colors.black26,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Row(
-                          children: [
-                            const Icon(LucideIcons.users,
-                                size: 10, color: Colors.white70),
-                            const SizedBox(width: 3),
-                            Text(
-                              '${event.attendeeCount}',
-                              style: const TextStyle(
-                                  color: Colors.white70, fontSize: 10),
-                            ),
-                          ],
-                        ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      event.title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
                       ),
-                    ],
-                  ),
-                ],
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      children: [
+                        const Icon(LucideIcons.calendar,
+                            size: 11, color: Colors.white70),
+                        const SizedBox(width: 3),
+                        Text(
+                          DateFormat('MMM d').format(event.startDate),
+                          style: const TextStyle(
+                              color: Colors.white70, fontSize: 11),
+                        ),
+                        const Spacer(),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 6, vertical: 2),
+                          decoration: BoxDecoration(
+                            color: Colors.black26,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(LucideIcons.users,
+                                  size: 10, color: Colors.white70),
+                              const SizedBox(width: 3),
+                              Text(
+                                '${event.attendeeCount}',
+                                style: const TextStyle(
+                                    color: Colors.white70, fontSize: 10),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

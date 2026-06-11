@@ -13,6 +13,7 @@ class Event {
   final int? maxParticipants;
   final List<String> tags;
   final String location;
+  final String imageUrl;
 
   const Event({
     required this.id,
@@ -28,5 +29,6 @@ class Event {
     this.maxParticipants,
     this.tags = const [],
     this.location = '',
+    required this.imageUrl,
   });
 }

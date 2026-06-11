@@ -9,6 +9,7 @@ class AppUser {
   final int communities;
   final int connections;
   final List<String> badges;
+  final String avatarUrl;
 
   const AppUser({
     required this.id,
@@ -20,5 +21,6 @@ class AppUser {
     this.communities = 0,
     this.connections = 0,
     this.badges = const [],
+    required this.avatarUrl,
   });
 }

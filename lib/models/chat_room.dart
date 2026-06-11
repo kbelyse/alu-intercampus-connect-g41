@@ -8,6 +8,7 @@ class ChatRoom {
   final int unreadCount;
   final bool isActiveNow;
   final String colorHex;
+  final String avatarUrl;
 
   const ChatRoom({
     required this.id,
@@ -18,5 +19,6 @@ class ChatRoom {
     this.unreadCount = 0,
     this.isActiveNow = false,
     required this.colorHex,
+    required this.avatarUrl,
   });
 }
