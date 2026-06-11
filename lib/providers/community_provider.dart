@@ -30,13 +30,8 @@ class CommunityProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Community? getById(String id) {
-    try {
-      return _communities.firstWhere((c) => c.id == id);
-    } catch (_) {
-      return null;
-    }
-  }
+  Community? getById(String id) =>
+      _communities.where((c) => c.id == id).firstOrNull;
 
   List<Community> _filter(List<Community> list) {
     if (_searchQuery.isEmpty) return list;
