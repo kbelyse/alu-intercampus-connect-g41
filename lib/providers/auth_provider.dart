@@ -5,7 +5,7 @@ import '../data/mock_data.dart';
 
 class AuthProvider extends ChangeNotifier {
   AppUser? _user = mockCurrentUser;
-  bool _isLoggedIn = false;
+  bool _isLoggedIn = true;
 
   AppUser? get user => _user;
   bool get isLoggedIn => _isLoggedIn;
