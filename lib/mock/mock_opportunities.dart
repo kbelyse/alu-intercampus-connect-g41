@@ -1,0 +1,103 @@
+import '../shared/models/opportunity_model.dart';
+import '../core/constants/image_constants.dart';
+
+class MockOpportunities {
+  static final List<OpportunityModel> opportunities = [
+    OpportunityModel(
+      id: 'opp_001',
+      title: 'Software Engineering Intern',
+      description:
+          'Join Andela\'s engineering team for a 3-month internship. Work on real-world projects, contribute to open source, and get mentored by senior engineers. Africa\'s top tech talent program.',
+      company: 'Andela',
+      imageUrl: ImageConstants.oppInternship,
+      type: OpportunityType.internship,
+      categories: ['Technology', 'Engineering', 'AI & Machine Learning'],
+      deadline: 'Aug 1, 2025',
+      location: 'Remote / Lagos',
+      compensation: '\$800/month',
+      skills: ['React', 'Node.js', 'Python', 'Cloud'],
+      isRemote: true,
+      applicantCount: 234,
+    ),
+    OpportunityModel(
+      id: 'opp_002',
+      title: 'Africa Tech Fellowship',
+      description:
+          'A competitive 6-month fellowship for Africa\'s top tech entrepreneurs. Receive \$15,000 in funding, mentorship, and access to a global network. Build your startup with the support of Africa\'s leading tech ecosystem.',
+      company: 'Founders Factory Africa',
+      imageUrl: ImageConstants.oppFellowship,
+      type: OpportunityType.fellowship,
+      categories: ['Entrepreneurship', 'Technology', 'Finance'],
+      deadline: 'Sep 15, 2025',
+      location: 'Lagos / Nairobi / Remote',
+      compensation: '\$15,000 grant',
+      skills: ['Entrepreneurship', 'Product Management', 'Leadership'],
+      isRemote: false,
+      applicantCount: 89,
+    ),
+    OpportunityModel(
+      id: 'opp_003',
+      title: 'Climate Innovation Grant',
+      description:
+          'The African Climate Foundation is offering \$25,000 grants to student-led climate innovation projects. Priority areas: renewable energy, sustainable agriculture, and climate resilience.',
+      company: 'African Climate Foundation',
+      imageUrl: ImageConstants.oppGrant,
+      type: OpportunityType.grant,
+      categories: ['Sustainability', 'Social Impact', 'Research'],
+      deadline: 'Oct 1, 2025',
+      location: 'Pan-African',
+      compensation: '\$25,000 grant',
+      skills: ['Climate Science', 'Research', 'Project Management'],
+      isRemote: true,
+      applicantCount: 45,
+    ),
+    OpportunityModel(
+      id: 'opp_004',
+      title: 'Product Management Intern',
+      description:
+          'Work with Flutterwave\'s product team to shape the future of African fintech. You\'ll own product features, run user research, and collaborate with engineering and design teams.',
+      company: 'Flutterwave',
+      imageUrl: ImageConstants.oppInternship,
+      type: OpportunityType.internship,
+      categories: ['Product Design', 'Technology', 'Finance'],
+      deadline: 'Jul 30, 2025',
+      location: 'Lagos / Remote',
+      compensation: '\$600/month',
+      skills: ['Product Management', 'User Research', 'Analytics'],
+      isRemote: true,
+      applicantCount: 178,
+    ),
+    OpportunityModel(
+      id: 'opp_005',
+      title: 'Impact Investing Competition',
+      description:
+          'Compete in Africa\'s premier student impact investing competition. Propose investment theses for social enterprises, pitch to real investors, and win up to \$5,000 for your project.',
+      company: 'Jacobs Foundation',
+      imageUrl: ImageConstants.oppGrant,
+      type: OpportunityType.competition,
+      categories: ['Finance', 'Social Impact', 'Entrepreneurship'],
+      deadline: 'Aug 20, 2025',
+      location: 'Virtual',
+      compensation: 'Up to \$5,000',
+      skills: ['Finance', 'Research', 'Presentation'],
+      isRemote: true,
+      applicantCount: 67,
+    ),
+    OpportunityModel(
+      id: 'opp_006',
+      title: 'Healthcare Innovation Program',
+      description:
+          'Amref Health Africa\'s 12-month program for students building health tech solutions. Gain clinical exposure, product development support, and access to a network of 30,000 health workers.',
+      company: 'Amref Health Africa',
+      imageUrl: ImageConstants.oppFellowship,
+      type: OpportunityType.program,
+      categories: ['Healthcare', 'Technology', 'Social Impact'],
+      deadline: 'Sep 5, 2025',
+      location: 'Nairobi / Remote',
+      compensation: 'Stipend + Mentorship',
+      skills: ['Healthcare', 'Technology', 'Research'],
+      isRemote: false,
+      applicantCount: 112,
+    ),
+  ];
+}

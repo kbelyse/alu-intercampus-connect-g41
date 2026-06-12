@@ -1,0 +1,77 @@
+import '../shared/models/notification_model.dart';
+
+class MockNotifications {
+  static final List<NotificationModel> notifications = [
+    NotificationModel(
+      id: 'notif_001',
+      title: 'ALU AI Summit is tomorrow!',
+      body: 'Don\'t forget — the ALU AI Summit starts at 9:00 AM. You\'re registered for 3 sessions.',
+      timestamp: DateTime.now().subtract(const Duration(hours: 1)),
+      isRead: false,
+      type: NotificationType.event,
+      actionId: 'event_001',
+    ),
+    NotificationModel(
+      id: 'notif_002',
+      title: 'New member in AI Club',
+      body: 'Chidi Okonkwo joined AI Club. Say hello!',
+      timestamp: DateTime.now().subtract(const Duration(hours: 3)),
+      isRead: false,
+      type: NotificationType.community,
+      actionId: 'comm_001',
+    ),
+    NotificationModel(
+      id: 'notif_003',
+      title: 'You earned a badge! 🏆',
+      body: 'Congratulations! You earned the "Community Builder" badge for joining 3 communities.',
+      timestamp: DateTime.now().subtract(const Duration(hours: 5)),
+      isRead: false,
+      type: NotificationType.badge,
+    ),
+    NotificationModel(
+      id: 'notif_004',
+      title: 'Deadline approaching',
+      body: 'The Africa Tech Fellowship application closes in 3 days. Don\'t miss out!',
+      timestamp: DateTime.now().subtract(const Duration(hours: 8)),
+      isRead: true,
+      type: NotificationType.opportunity,
+      actionId: 'opp_002',
+    ),
+    NotificationModel(
+      id: 'notif_005',
+      title: 'Kwame mentioned you',
+      body: 'Kwame Asante mentioned you in AI Club: "@Amara are you presenting at the summit?"',
+      timestamp: DateTime.now().subtract(const Duration(days: 1)),
+      isRead: true,
+      type: NotificationType.message,
+      actionId: 'chat_001',
+    ),
+    NotificationModel(
+      id: 'notif_006',
+      title: 'Founder Fridays tonight!',
+      body: 'Reminder: Founder Fridays starts at 5:00 PM. You\'ve RSVP\'d — we\'ll see you there!',
+      timestamp: DateTime.now().subtract(const Duration(days: 1, hours: 2)),
+      isRead: true,
+      type: NotificationType.event,
+      actionId: 'event_002',
+    ),
+    NotificationModel(
+      id: 'notif_007',
+      title: 'New opportunity: Climate Innovation Grant',
+      body: 'A \$25,000 grant matching your sustainability interests just dropped. Apply before Oct 1.',
+      timestamp: DateTime.now().subtract(const Duration(days: 2)),
+      isRead: true,
+      type: NotificationType.opportunity,
+      actionId: 'opp_003',
+    ),
+    NotificationModel(
+      id: 'notif_008',
+      title: 'Impact Leaders is trending 🔥',
+      body: 'Impact Leaders had 18 posts this week — the most active community on campus.',
+      timestamp: DateTime.now().subtract(const Duration(days: 2, hours: 6)),
+      isRead: true,
+      type: NotificationType.community,
+      actionId: 'comm_005',
+    ),
+  ];
+}

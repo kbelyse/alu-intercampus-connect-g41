@@ -1,0 +1,32 @@
+name: alu_connect
+description: ALU Connect - Student Engagement Ecosystem for African Leadership University
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+  go_router: ^13.2.0
+  google_fonts: ^6.2.1
+  cached_network_image: ^3.3.1
+  flutter_animate: ^4.5.0
+  shimmer: ^3.0.0
+  intl: ^0.19.0
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.7
+  riverpod_generator: ^2.3.9
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
