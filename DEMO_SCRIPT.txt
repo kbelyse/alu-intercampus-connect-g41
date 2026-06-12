@@ -1,0 +1,572 @@
+================================================================================
+       ALU CONNECT — DEMO VIDEO SCRIPT & TEAM ASSIGNMENTS
+       Formative 1 — Mobile Application Development
+       Duration: ~13 minutes | 5 Presenters
+================================================================================
+
+TEAM MEMBERS & OWNERSHIP
+────────────────────────
+  1. [YOUR NAME]   — Presenter + New Feature (AI Recommendations) + Intro/Closing
+  2. Mordecai      — UI/UX Design System + Onboarding + Splash
+  3. Placide       — State Management + Technical Architecture + Code Quality
+  4. David         — Navigation Flow + Communities + Chat + Startup Hub
+  5. Benithat      — Growth Dashboard + Profile + Error Handling + Settings
+
+GIT CONTRIBUTION SPLIT (what each person commits & owns)
+─────────────────────────────────────────────────────────
+  [YOUR NAME]   → lib/shared/providers/recommendations_provider.dart
+                  lib/features/splash/screens/splash_screen.dart
+                  lib/core/theme/app_colors.dart
+                  lib/core/theme/app_theme.dart
+                  lib/main.dart
+                  lib/routes/app_router.dart
+
+  Mordecai      → lib/core/theme/app_typography.dart
+                  lib/core/constants/app_constants.dart
+                  lib/core/constants/image_constants.dart
+                  lib/features/onboarding/screens/onboarding_screen.dart
+                  lib/features/auth/screens/login_screen.dart
+                  lib/shared/widgets/primary_button.dart
+                  lib/shared/widgets/user_avatar.dart
+                  lib/shared/widgets/section_header.dart
+
+  Placide       → lib/shared/models/ (all 8 model files)
+                  lib/mock/ (all 6 mock data files)
+                  lib/shared/providers/user_provider.dart
+                  lib/shared/providers/events_provider.dart
+                  lib/shared/providers/communities_provider.dart
+                  lib/shared/providers/opportunities_provider.dart
+                  lib/shared/widgets/loading_skeleton.dart
+                  lib/shared/widgets/recommendation_card.dart
+                  lib/shared/widgets/event_card.dart
+
+  David         → lib/features/communities/screens/community_discovery_screen.dart
+                  lib/features/communities/screens/community_details_screen.dart
+                  lib/features/communities/screens/my_communities_screen.dart
+                  lib/features/chat/screens/chat_list_screen.dart
+                  lib/features/chat/screens/community_chat_screen.dart
+                  lib/features/startup/screens/startup_hub_screen.dart
+                  lib/features/shell/main_shell.dart
+                  lib/shared/widgets/community_card.dart
+                  lib/shared/widgets/app_search_bar.dart
+
+  Benithat      → lib/features/dashboard/screens/growth_dashboard_screen.dart
+                  lib/features/profile/screens/user_profile_screen.dart
+                  lib/features/profile/screens/edit_profile_screen.dart
+                  lib/features/profile/screens/settings_screen.dart
+                  lib/features/notifications/screens/notifications_screen.dart
+                  lib/features/opportunities/screens/opportunity_details_screen.dart
+                  lib/features/opportunities/screens/saved_opportunities_screen.dart
+                  lib/features/opportunities/screens/my_events_screen.dart
+                  lib/features/opportunities/screens/search_results_screen.dart
+                  lib/features/create/screens/create_opportunity_screen.dart
+                  lib/features/opportunities/widgets/opportunity_card.dart
+                  lib/shared/widgets/empty_state_widget.dart
+                  lib/shared/providers/notifications_provider.dart
+                  lib/shared/providers/chat_provider.dart
+                  lib/shared/providers/startup_provider.dart
+                  lib/features/home/screens/home_screen.dart
+                  lib/features/home/widgets/campus_pulse_widget.dart
+
+
+================================================================================
+SEGMENT 1 — [YOUR NAME]  |  INTRO + PROBLEM STATEMENT
+Duration: ~2 minutes  |  SHOW: App running on emulator/device
+================================================================================
+
+[ON SCREEN: Show the ALU Connect app on the home screen. Have the app open
+and scrolled to show the Recommended For You section. Keep it live — don't
+pre-record, it should feel natural.]
+
+Hey everyone. So today our team is presenting ALU Connect — a student
+engagement platform we built from the ground up specifically for African
+Leadership University students.
+
+Before I get into the app itself, I want to quickly talk about why we built
+this, because I think that's actually the most important part.
+
+At ALU there are constantly events happening, communities being formed,
+startup opportunities, internships — there's genuinely a lot going on. But
+the problem is that finding the right things, the things that actually matter
+to you, is really hard. You hear about things last minute, or you miss them
+entirely because there's no one central place to discover them.
+
+So we asked ourselves — what would a student engagement platform look like
+if we actually designed it for ALU students? Not a generic events app, not
+another student portal that looks like it was built in 2015 — but something
+that actually feels like the quality of education we're getting here.
+
+What we built is ALU Connect. It's a full Flutter mobile application with five
+main sections — Home, Communities, Create, Messages, and Profile. And it has
+some features that we're genuinely proud of that I think set it apart, which
+we'll walk through in detail.
+
+Right now I'm looking at the Home screen — and you can see straight away it's
+dark, minimal, premium. The first thing you see is a "Recommended For You"
+section — and this is actually one of our key differentiators that I'll come
+back to at the end of the demo.
+
+Let me hand over to Mordecai who's going to walk through how we designed the
+UI and the design decisions we made.
+
+
+================================================================================
+SEGMENT 2 — MORDECAI  |  UI/UX DESIGN SYSTEM + ONBOARDING
+Duration: ~2.5 minutes  |  SHOW: Splash → Onboarding → Login → Design system
+================================================================================
+
+[ON SCREEN: Navigate to Settings and log out so the app goes back to splash.
+Then walk through: Splash → Onboarding screens → Interest selection → Login.
+Have VS Code open side-by-side at app_colors.dart or app_typography.dart
+for the second half.]
+
+Thanks. So I want to talk about the design decisions we made, because I think
+this is where a lot of our work went.
+
+Let me start from the very beginning — the splash screen. We wanted the first
+thing a user sees to feel premium, not generic. So we built this animated
+splash with two floating gradient orbs — one in the secondary purple color and
+one in our primary orange — that scale up and down in opposite rhythms. The
+logo comes in with a spring animation, and then the tagline fades in below.
+This kind of layered animation entry is directly inspired by how Apple builds
+app launches, where every element has intentional timing.
+
+[Navigate to onboarding]
+
+Now the onboarding — we have three slides. Discover, Connect, Grow. But the
+thing I want to point out is the third slide, which is the interest selection
+screen. This isn't just a pretty screen — these interests that the user picks
+actually feed directly into our recommendation engine. So from the very first
+interaction the user has with the app, we're already personalizing their
+experience. That's a deliberate product decision, not just a UI choice.
+
+[Show interest tags being selected]
+
+Notice how when you tap an interest, it transitions smoothly between the
+unselected state — grey border, grey text — and the selected state — orange
+border, orange background, orange text. Everything uses `AnimatedContainer`
+with a 200ms duration. It's subtle but it makes the interaction feel alive.
+
+Now let me talk briefly about our design system.
+
+[Open app_colors.dart]
+
+We have six defined colors: background at 0A0B14, which is a very deep navy-
+black. Surface at 12141F, which is slightly lighter. Elevated at 1A1D2E for
+floating cards. Primary orange at F5A623, secondary purple at 6C63FF, and then
+success green and error red. This three-layer depth system — background,
+surface, elevated — is what gives the app that sense of cards floating above
+the background without needing any actual shadows.
+
+[Open app_typography.dart]
+
+For fonts we use two families — Space Grotesk for headings and Inter for body
+text. Both loaded through google_fonts, so no bundled assets needed. Space
+Grotesk has that slightly geometric, modern look that makes headings feel
+designed, not just typed. Inter is the most legible UI font that exists right
+now — it's what Linear, Notion, and most modern SaaS products use.
+
+Every text style is pre-defined in AppTypography — displayLarge down to
+caption. So no hardcoded font sizes anywhere in the codebase. This was
+deliberate for maintainability and consistency.
+
+I'll pass to Placide who'll talk about the technical architecture underneath
+all of this.
+
+
+================================================================================
+SEGMENT 3 — PLACIDE  |  STATE MANAGEMENT + CODE ARCHITECTURE
+Duration: ~2.5 minutes  |  SHOW: Live code in lib/shared/providers/ and models/
+================================================================================
+
+[ON SCREEN: VS Code showing the project structure — lib/ folder expanded.
+Show: user_provider.dart, communities_provider.dart, then show a model file.
+Then LIVE in the app show the RSVP interaction and join community interaction.]
+
+Okay so I want to talk about how we structured the code because I think this
+is one of our strongest areas.
+
+[Show folder structure]
+
+We used a feature-first architecture. So every feature — home, communities,
+chat, profile — lives in its own folder under lib/features. Each folder can
+have screens, widgets, and if it needs something feature-specific, it has that
+too. The shared things — models, providers, widgets that are used across the
+whole app — live under lib/shared. This is the pattern used in production
+Flutter applications and it makes the codebase very maintainable.
+
+[Open user_provider.dart]
+
+For state management we used Riverpod 2 with StateNotifier. This is the current
+recommended approach for Flutter apps. Let me show you what this actually looks
+like in practice.
+
+The UserNotifier class holds the current user's state. Every action — RSVPing
+an event, saving an event, joining a community — is a method on this notifier.
+So when a user RSVPs to an event, we call `rsvpEvent`, which adds the event ID
+to their rsvpedEventIds list, increments eventsAttended, adds 10 leadership
+points, and calls setState with a copyWith — which is the immutable state
+pattern.
+
+[Show in app: tap RSVP on an event]
+
+Watch this — I'm on the event details screen for the ALU AI Summit. When I tap
+RSVP Now, you can see the button immediately changes to "Cancel RSVP" in the
+elevated grey, and the green RSVP'd badge appears in the bottom right of the
+hero image. That's because the UI is watching the userProvider reactively via
+Riverpod's Consumer widget. No setState calls in the UI — the data flows down
+automatically.
+
+[Open communities_provider.dart]
+
+The CommunitiesNotifier is interesting because it cross-notifies. When you join
+a community, it updates both the community's member count and the user's
+joinedCommunityIds. Both happen atomically so the UI stays consistent.
+
+[Show join community in app]
+
+See — tapping Join on a community immediately updates the button to "Joined",
+the member count increments by one, and on the home screen the trending
+communities section reflects this.
+
+[Open event_model.dart]
+
+Our models use immutable value objects with copyWith patterns. Every model has
+a copyWith method, which means state updates never mutate — they always return
+new instances. This prevents subtle bugs where one part of the app
+accidentally changes shared state.
+
+Passing to David who'll show the navigation and key feature flows.
+
+
+================================================================================
+SEGMENT 4 — DAVID  |  NAVIGATION + COMMUNITIES + CHAT + STARTUP HUB
+Duration: ~2.5 minutes  |  SHOW: Navigate between tabs, communities flow,
+chat, and startup hub
+================================================================================
+
+[ON SCREEN: Live app navigation. Start on home, show bottom nav, then go
+through Communities full flow, then Chat, then Startup Hub. Have the routing
+code open briefly to show the go_router setup.]
+
+Thanks Placide. I'm going to walk through the navigation architecture and
+then show some of the key feature flows.
+
+[Show bottom nav]
+
+For navigation we used go_router with StatefulShellRoute.indexedStack. This is
+important because it means each tab maintains its own navigation stack. So if
+I navigate deep into Communities, then switch to Messages and come back,
+Communities is exactly where I left it. The router file maps 5 main branches
+for the shell, and then 14 additional push routes for screens like event
+details, community details, notifications, and so on.
+
+[Navigate through tabs]
+
+The bottom nav itself is a custom widget — not the default Material
+BottomNavigationBar. The center Create button has that orange gradient and a
+box shadow that makes it feel elevated. The active tab icon transitions between
+the outline and filled version using AnimatedSwitcher, which gives it that
+satisfying iOS-style feel.
+
+[Go to Communities tab]
+
+Now let me show the Communities flow, because I think this is one of the
+strongest user journeys in the app.
+
+On the discovery screen you can filter communities by All, Trending, Joined,
+Technology, Business, or Impact. These filter chips animate with AnimatedContainer
+when selected. The search bar updates the list in real time.
+
+[Tap on AI Club]
+
+Tapping into a community gives you the full details — cover image, about
+section, member count, weekly post activity, related upcoming events, and a
+prominent Join button at the bottom. The cover image has a gradient overlay
+that fades to the background color so the transition from image to content
+feels seamless.
+
+[Tap the chat icon / navigate to Chat]
+
+From a community detail you can go directly into that community's chat. The
+chat screen has group vs direct message detection — group chats show a
+communities icon on the avatar, direct messages show an online indicator.
+Messages use bubble alignment — mine on the right with the orange primary
+color, others on the left with the elevated background. The input field expands
+for multiline and the send button uses the same orange gradient as the rest of
+the app's primary actions.
+
+[Navigate to Startup Hub via Profile or Startup Banner]
+
+The Startup Corner is one of our product differentiators that addresses a real
+ALU need. A lot of students are building things but have no way to find
+collaborators. We have a dedicated section showing student startups with their
+stage — pre-seed, seed, series A — and open roles. Below that are collaboration
+requests where students post things like "Looking for a technical co-founder"
+or "Looking for a UX designer." This is directly addressing the collaboration
+gap at ALU.
+
+Handing to Benithat for the personal growth features and error handling.
+
+
+================================================================================
+SEGMENT 5 — BENITHAT  |  GROWTH DASHBOARD + PROFILE + ERROR HANDLING
+Duration: ~2.5 minutes  |  SHOW: Profile → Dashboard → Notifications →
+Saved → Empty states → Search → Create
+================================================================================
+
+[ON SCREEN: Start on Profile tab, then navigate to Growth Dashboard, then
+Notifications, then demonstrate empty states by going to My Communities when
+no communities are joined, then show Search.]
+
+Thank you David. I'm going to walk through the personal growth features and
+also talk about how we handled edge cases and user experience considerations
+throughout the app.
+
+[Go to Profile tab]
+
+The Profile screen gives you a snapshot of who you are on ALU Connect. Your
+avatar with an orange ring, your name, campus, major, a quick stats strip
+showing events attended, communities joined, leadership points, and networking
+score, and then quick links to your key sections.
+
+[Tap the chart icon → Growth Dashboard]
+
+This is the Growth Dashboard and it's one of the features I'm genuinely proud
+of. Every action a student takes in the app feeds into this.
+
+The header card shows your current leadership points — Amara here has 340 —
+your streak, and your campus. Below that is a 2x2 stats grid with emoji icons
+showing events attended, communities joined, total RSVPs, and networking score.
+
+[Point to progress bars]
+
+These progress bars are meaningful. Rising Leader shows you're at 340 of 500
+points to reach Gold status — so there's a goal to work toward. Community
+Connector shows progress toward joining 5 communities.
+
+[Scroll down to badges]
+
+The Impact Badges section shows all 8 badges in a 4-column grid. Earned badges
+are bright and colored, unearned badges are grayed out with a dark overlay.
+This creates a clear visual distinction without needing any explanatory text.
+When you earn a badge, it appears in your profile. These aren't just decorative —
+they're triggered by real actions: joining 3 communities, attending 10 events,
+participating in the hackathon.
+
+[Go back to Profile, tap Notifications bell or go through home]
+
+On the notifications screen, unread items have a subtle background highlight
+and a small orange dot. There's a mark all as read button. Each notification
+has a type icon — a party emoji for events, people emoji for communities,
+briefcase for opportunities, trophy for badges.
+
+[Demonstrate empty state — go to My Communities if you haven't joined any]
+
+Now I want to show the empty states because I think they demonstrate real care
+for the user experience. When you haven't joined any communities yet, instead
+of just a blank white screen you get this — a centered illustration card with
+an emoji, a title, a subtitle, and an action button that takes you to Discover
+Communities. Every empty state in the app is like this. No notifications? There's
+an empty state. No saved items? Empty state. No search results? Empty state.
+These are proper UI patterns, not afterthoughts.
+
+[Show Search screen]
+
+The search screen is live — it searches events, communities, and opportunities
+simultaneously as you type. If nothing matches, you get the "No results" empty
+state with a suggestion. When you haven't typed anything yet, you see popular
+search suggestions instead of a blank screen.
+
+[Quickly show Create screen]
+
+And the Create screen — this is where authorized users post new events,
+workshops, and opportunities. Form validation is active — the title is required,
+the description needs minimum 20 characters, and the categories system uses the
+same interest tags from onboarding so discovery stays consistent.
+
+Back to [YOUR NAME] for the AI feature and closing.
+
+
+================================================================================
+SEGMENT 6 — [YOUR NAME]  |  AI RECOMMENDATIONS + VERSION CONTROL + CLOSING
+Duration: ~2 minutes  |  SHOW: Home screen recommendations changing live,
+then show recommendations_provider.dart code, then GitHub contributions
+================================================================================
+
+[ON SCREEN: Start on Home screen, Recommended For You section visible.
+Have the code file open in VS Code ready to switch to. Then have GitHub open
+in a browser tab showing commit history.]
+
+Okay so I want to talk about the feature I'm most excited about — the AI
+Recommendation Engine — and then close out with our version control approach.
+
+[Point at Recommended For You on home screen]
+
+This section — "Recommended For You" with the AI Powered badge — is a
+frontend simulation of a real recommendation system. I want to be honest about
+what it is: it's not calling an external API, it's running locally using state.
+But the algorithm is real and it does actually adapt.
+
+[Switch to VS Code → recommendations_provider.dart]
+
+Here's how it works. The `recommendedEventsProvider` takes three inputs: the
+current user, all events, and the user's joined communities.
+
+For each event it calculates a relevance score:
+- If an event's category directly matches one of your interests: plus 3.0
+- If an event's category matches something you've previously RSVP'd to: plus 1.5
+- If an event's category matches a tag in one of your joined communities: plus 1.0
+- If the event is featured: plus 2.0
+- Popularity factor from attendee count, and a recency bonus for events in the next 14 days
+
+Then it sorts all events by this score, filters out ones you've already RSVP'd
+to, and returns the top 6.
+
+[Switch back to app, RSVP to an event from the recommendations]
+
+Watch what happens when I RSVP to the Founder Fridays event. I go to the
+details screen, tap RSVP Now... and now go back to the Home screen. The
+recommendations have updated. Founder Fridays is gone — because you've already
+committed to it — and the events in Entrepreneurship and Finance have moved up
+because the engine now knows you're interested in that category.
+
+That's the personalization loop working. The more you interact, the more
+relevant your feed becomes. In a production version this would be a server-side
+model with collaborative filtering. As a frontend prototype it demonstrates the
+concept fully.
+
+[Switch to GitHub in browser]
+
+For version control — each team member worked on their own branch and submitted
+pull requests. [YOUR NAME] committed the theme system, routing, and recommendation
+engine. Mordecai handled the design system and onboarding. Placide owns the data
+layer — models, mock data, and providers. David built the navigation shell,
+communities, and chat. Benithat handled the profile, dashboard, and all the
+opportunity screens.
+
+[Come back to app]
+
+To wrap up — ALU Connect is a 20-screen Flutter application, zero errors, builds
+to a working APK. The design is intentional — every spacing decision, every
+animation, every empty state was thought through. The architecture is production-
+grade — feature-first folders, Riverpod providers, immutable models. And the
+AI recommendation engine is a genuine attempt to solve a real problem: helping
+ALU students cut through the noise and find what actually matters to them.
+
+Thank you.
+
+
+================================================================================
+RUBRIC COVERAGE CHECKLIST
+================================================================================
+
+✅ UI/UX Design & Layout Redesign (10 pts)
+   → Covered by Mordecai: design system, color palette, typography, animations,
+     onboarding, Material vs custom navigation bar
+
+✅ Critical Thinking & Product Decisions (10 pts)
+   → Covered by [YOU]: AI recommendation problem framing + algorithm justification
+   → Covered by David: Startup Corner justifying the collaboration gap at ALU
+   → Covered by Benithat: Growth Dashboard as engagement motivation system
+
+✅ Navigation & Interaction Flow (5 pts)
+   → Covered by David: go_router, StatefulShellRoute, tab state preservation,
+     full community flow walkthrough
+
+✅ State Handling & Dynamic Interaction (5 pts)
+   → Covered by Placide: Riverpod StateNotifier, cross-notifier updates,
+     RSVP live demo, join community live demo
+
+✅ Technical Initiative & Exploration (5 pts)
+   → Covered by Placide + [YOU]: flutter_animate for animations, cached_network_image,
+     shimmer loading, custom reusable widget library, go_router StatefulShellRoute,
+     AI scoring algorithm, google_fonts
+
+✅ Technical Report & Design Justification (10 pts)
+   → All segments explain WHY, not just WHAT
+   → Code shown on screen with explanations
+   → Design decisions tied back to ALU student needs
+
+✅ Code Quality & Maintainability (2.5 pts)
+   → Covered by Placide: feature-first architecture, AppTypography, immutable models,
+     reusable widgets shown in code
+
+✅ Error Handling & User Experience Considerations (2.5 pts)
+   → Covered by Benithat: empty states (5 types), form validation, snackbar
+     feedback, loading skeletons, edge case handling
+
+✅ Demo Video & Conceptual Understanding (5 pts)
+   → Every person explains implementation, not just clicks through screens
+   → Live code shown alongside live app
+   → Justifications tied to real ALU student problems
+
+✅ Team Collaboration & Version Control (5 pts)
+   → Covered by [YOU] in closing: GitHub branches, PRs, per-person ownership
+
+
+================================================================================
+SCREEN RECORDING ORDER (what to show and when)
+================================================================================
+
+00:00 - 00:15  [YOUR NAME]  App open on Home screen, scroll briefly
+00:15 - 00:30  [YOUR NAME]  Explain problem, stay on home
+00:30 - 01:45  [YOUR NAME]  Walk through home sections briefly
+01:45 - 02:00  [YOUR NAME]  Hand off to Mordecai
+
+02:00 - 02:15  MORDECAI     Log out via Settings → splash animation
+02:15 - 02:50  MORDECAI     Go through 3 onboarding slides
+02:50 - 03:15  MORDECAI     Select interests on slide 3
+03:15 - 03:30  MORDECAI     Login screen → log in
+03:30 - 04:00  MORDECAI     VS Code: app_colors.dart
+04:00 - 04:30  MORDECAI     VS Code: app_typography.dart
+04:30 - 04:45  MORDECAI     Hand off to Placide
+
+04:45 - 05:00  PLACIDE      VS Code: project folder structure
+05:00 - 05:30  PLACIDE      VS Code: user_provider.dart
+05:30 - 06:00  PLACIDE      App: RSVP an event, show state update
+06:00 - 06:15  PLACIDE      VS Code: communities_provider.dart
+06:15 - 06:35  PLACIDE      App: join a community, show count update
+06:35 - 06:45  PLACIDE      VS Code: event_model.dart copyWith
+06:45 - 07:00  PLACIDE      Hand off to David
+
+07:00 - 07:20  DAVID        App: tab navigation demo
+07:20 - 07:30  DAVID        VS Code: app_router.dart briefly
+07:30 - 08:00  DAVID        App: Communities discovery + filter chips
+08:00 - 08:20  DAVID        App: Community details + join
+08:20 - 08:45  DAVID        App: Community chat + send message
+08:45 - 09:15  DAVID        App: Startup Hub — startups + collab requests
+09:15 - 09:30  DAVID        Hand off to Benithat
+
+09:30 - 09:50  BENITHAT     App: Profile screen walkthrough
+09:50 - 10:20  BENITHAT     App: Growth Dashboard — stats, progress, badges
+10:20 - 10:45  BENITHAT     App: Notifications screen
+10:45 - 11:00  BENITHAT     App: Empty state (My Communities — before joining)
+11:00 - 11:15  BENITHAT     App: Search screen — live search demo
+11:15 - 11:30  BENITHAT     App: Create screen — form + validation
+11:30 - 11:45  BENITHAT     Hand off to [YOUR NAME]
+
+11:45 - 12:10  [YOUR NAME]  App: Home → RSVP to event → back → recs changed
+12:10 - 12:40  [YOUR NAME]  VS Code: recommendations_provider.dart algorithm
+12:40 - 13:00  [YOUR NAME]  GitHub: show commit history + branches
+13:00 - 13:20  [YOUR NAME]  Closing remarks
+
+
+================================================================================
+TIPS FOR RECORDING
+================================================================================
+
+1. Use an Android emulator at 1080x1920 (Pixel 5 API 34) for clean recording
+2. Set system font size to default, no accessibility fonts
+3. Record at 60fps if possible — animations look much better
+4. Have the VS Code font at 16px minimum so code is readable on video
+5. Don't rush — pause 1 second after each navigation tap before speaking
+6. If something doesn't load (network image), just keep talking — say
+   "you'd see the event cover image here, it's loading from Unsplash"
+7. Each person should record their own segment in one continuous take
+   if possible, then stitch in post-production
+8. Put a subtle title card between each person: "Mordecai — UI/UX Design"
+
+================================================================================
+                         GOOD LUCK TEAM — GO BUILD AFRICA 🌍
+================================================================================
